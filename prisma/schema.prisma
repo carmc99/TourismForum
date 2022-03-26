@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Country {
+  id String @id @default(cuid())
+  name String
+  profiles Profile[]
+  locations Location[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Location {
+  id String @id @default(cuid())
+  name String
+  countryId String
+  posts Post[]
+  country Country @relation(fields: [countryId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Session {
+  id String @id @default(cuid())
+  expires DateTime
+  sessionToken String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Account {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  type String
+  provider String
+  providerAccountId String
+  refresh_token String
+  access_token String
+  expires_at Int
+  token_type String
+  scope String
+  id_token String
+  session_state String
+  oauth_token_secret String
+  oauth_token String
+}
+
+model Pages {
+  id String @id @default(cuid())
+  name String
+  path String
+  roles Role[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Role {
+  id String @id @default(cuid())
+  name String
+  users User[]
+  pages Pages[]
+}
+
+model User {
+  id String @id @default(cuid())
+  name String
+  email String
+  emailVerified DateTime
+  role Role @relation(fields: [roleId], references: [id])
+  roleId String
+  profile Profile?
+  sessions Session[]
+  accounts Account[]
+  posts Post[]
+  comments Comment[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Profile {
+  id String @id @default(cuid())
+  phone String
+  address String
+  image String
+  gender String
+  countryId String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  country Country @relation(fields: [countryId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Hotel {
+  id String @id @default(cuid())
+  name String
+  price_per_night Int
+  lunch_included Boolean
+  image String
+  posts Post[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+enum Biome {
+  TUNDRA
+  BOSQUE
+  PRADERA
+  CHAPARRAL
+  DESIERTO
+  TAIGA
+  ESTEPA
+  SELVA_TROPICAL
+  SABANA
+  MANGLAR
+}
+
+model Post {
+  id String @id @default(cuid())
+  userId String
+  author User @relation(fields: [userId], references: [id])
+  locationId String
+  location Location @relation(fields: [locationId], references: [id])
+  biome Biome
+  hotelId String?
+  hotel Hotel? @relation(fields: [hotelId], references: [id])
+  title String
+  description String
+  image String
+  average_score Int
+  comments Comment[]
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model Comment {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  postId String
+  post Post @relation(fields: [postId], references: [id])
+  description String
+  score Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
