@@ -1,8 +1,8 @@
 import { User } from "../models/User";
 export declare class Session {
     id: string;
-    expires: Date;
     sessionToken: string;
     userId: string;
+    expires: Date;
     user?: User;
 }

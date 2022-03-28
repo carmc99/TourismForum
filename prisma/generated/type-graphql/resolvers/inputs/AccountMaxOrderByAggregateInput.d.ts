@@ -11,6 +11,4 @@ export declare class AccountMaxOrderByAggregateInput {
     scope?: "asc" | "desc" | undefined;
     id_token?: "asc" | "desc" | undefined;
     session_state?: "asc" | "desc" | undefined;
-    oauth_token_secret?: "asc" | "desc" | undefined;
-    oauth_token?: "asc" | "desc" | undefined;
 }

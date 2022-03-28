@@ -1,4 +1,5 @@
-import { IntWithAggregatesFilter } from "../inputs/IntWithAggregatesFilter";
+import { IntNullableWithAggregatesFilter } from "../inputs/IntNullableWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 export declare class AccountScalarWhereWithAggregatesInput {
     AND?: AccountScalarWhereWithAggregatesInput[] | undefined;
@@ -9,13 +10,11 @@ export declare class AccountScalarWhereWithAggregatesInput {
     type?: StringWithAggregatesFilter | undefined;
     provider?: StringWithAggregatesFilter | undefined;
     providerAccountId?: StringWithAggregatesFilter | undefined;
-    refresh_token?: StringWithAggregatesFilter | undefined;
-    access_token?: StringWithAggregatesFilter | undefined;
-    expires_at?: IntWithAggregatesFilter | undefined;
-    token_type?: StringWithAggregatesFilter | undefined;
-    scope?: StringWithAggregatesFilter | undefined;
-    id_token?: StringWithAggregatesFilter | undefined;
-    session_state?: StringWithAggregatesFilter | undefined;
-    oauth_token_secret?: StringWithAggregatesFilter | undefined;
-    oauth_token?: StringWithAggregatesFilter | undefined;
+    refresh_token?: StringNullableWithAggregatesFilter | undefined;
+    access_token?: StringNullableWithAggregatesFilter | undefined;
+    expires_at?: IntNullableWithAggregatesFilter | undefined;
+    token_type?: StringNullableWithAggregatesFilter | undefined;
+    scope?: StringNullableWithAggregatesFilter | undefined;
+    id_token?: StringNullableWithAggregatesFilter | undefined;
+    session_state?: StringNullableWithAggregatesFilter | undefined;
 }

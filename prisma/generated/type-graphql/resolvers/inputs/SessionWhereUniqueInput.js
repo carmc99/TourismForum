@@ -11,6 +11,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], SessionWhereUniqueInput.prototype, "id", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], SessionWhereUniqueInput.prototype, "sessionToken", void 0);
 SessionWhereUniqueInput = tslib_1.__decorate([
     TypeGraphQL.InputType("SessionWhereUniqueInput", {
         isAbstract: true

@@ -82,18 +82,6 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], AccountCountAggregate.prototype, "oauth_token_secret", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", Number)
-], AccountCountAggregate.prototype, "oauth_token", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", Number)
 ], AccountCountAggregate.prototype, "_all", void 0);
 AccountCountAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("AccountCountAggregate", {

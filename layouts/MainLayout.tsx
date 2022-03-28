@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-const PrivateLayout = ({ children }) => {
+const MainLayout = ({ children }) => {
   const { data: session, status }: any = useSession();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const PrivateLayout = ({ children }) => {
       <div className='flex flex-col'>
         <button
           onClick={() => {
-            signOut();
+            signOut(session);
           }}
           className='w-32 bg-black text-white'
         >
@@ -33,4 +33,4 @@ const PrivateLayout = ({ children }) => {
   }
 };
 
-export default PrivateLayout;
+export default MainLayout;

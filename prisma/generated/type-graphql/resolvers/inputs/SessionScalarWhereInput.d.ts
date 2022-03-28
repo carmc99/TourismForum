@@ -5,7 +5,7 @@ export declare class SessionScalarWhereInput {
     OR?: SessionScalarWhereInput[] | undefined;
     NOT?: SessionScalarWhereInput[] | undefined;
     id?: StringFilter | undefined;
-    expires?: DateTimeFilter | undefined;
     sessionToken?: StringFilter | undefined;
     userId?: StringFilter | undefined;
+    expires?: DateTimeFilter | undefined;
 }

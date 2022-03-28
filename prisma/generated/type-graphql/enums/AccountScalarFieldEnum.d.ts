@@ -10,7 +10,5 @@ export declare enum AccountScalarFieldEnum {
     token_type = "token_type",
     scope = "scope",
     id_token = "id_token",
-    session_state = "session_state",
-    oauth_token_secret = "oauth_token_secret",
-    oauth_token = "oauth_token"
+    session_state = "session_state"
 }

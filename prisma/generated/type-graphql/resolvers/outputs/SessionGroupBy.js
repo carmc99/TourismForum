@@ -15,12 +15,6 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], SessionGroupBy.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => Date, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", Date)
-], SessionGroupBy.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
@@ -32,6 +26,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], SessionGroupBy.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Date)
+], SessionGroupBy.prototype, "expires", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionCountAggregate_1.SessionCountAggregate, {
         nullable: true

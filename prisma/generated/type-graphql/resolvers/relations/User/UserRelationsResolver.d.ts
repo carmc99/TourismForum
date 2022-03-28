@@ -10,10 +10,10 @@ import { UserCommentsArgs } from "./args/UserCommentsArgs";
 import { UserPostsArgs } from "./args/UserPostsArgs";
 import { UserSessionsArgs } from "./args/UserSessionsArgs";
 export declare class UserRelationsResolver {
-    role(user: User, ctx: any): Promise<Role>;
-    profile(user: User, ctx: any): Promise<Profile | null>;
-    sessions(user: User, ctx: any, args: UserSessionsArgs): Promise<Session[]>;
+    role(user: User, ctx: any): Promise<Role | null>;
     accounts(user: User, ctx: any, args: UserAccountsArgs): Promise<Account[]>;
+    sessions(user: User, ctx: any, args: UserSessionsArgs): Promise<Session[]>;
+    profile(user: User, ctx: any): Promise<Profile | null>;
     posts(user: User, ctx: any, args: UserPostsArgs): Promise<Post[]>;
     comments(user: User, ctx: any, args: UserCommentsArgs): Promise<Comment[]>;
 }

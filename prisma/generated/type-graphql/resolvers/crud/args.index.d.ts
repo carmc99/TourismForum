@@ -9,3 +9,4 @@ export * from "./Profile/args";
 export * from "./Role/args";
 export * from "./Session/args";
 export * from "./User/args";
+export * from "./VerificationToken/args";

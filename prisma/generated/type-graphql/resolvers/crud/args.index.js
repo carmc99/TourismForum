@@ -12,3 +12,4 @@ tslib_1.__exportStar(require("./Profile/args"), exports);
 tslib_1.__exportStar(require("./Role/args"), exports);
 tslib_1.__exportStar(require("./Session/args"), exports);
 tslib_1.__exportStar(require("./User/args"), exports);
+tslib_1.__exportStar(require("./VerificationToken/args"), exports);

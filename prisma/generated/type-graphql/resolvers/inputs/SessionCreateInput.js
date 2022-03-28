@@ -13,17 +13,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], SessionCreateInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => Date, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", Date)
-], SessionCreateInput.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", String)
 ], SessionCreateInput.prototype, "sessionToken", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", Date)
+], SessionCreateInput.prototype, "expires", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserCreateNestedOneWithoutSessionsInput_1.UserCreateNestedOneWithoutSessionsInput, {
         nullable: false

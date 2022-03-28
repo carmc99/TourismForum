@@ -11,6 +11,4 @@ export declare class AccountMaxAggregate {
     scope: string | null;
     id_token: string | null;
     session_state: string | null;
-    oauth_token_secret: string | null;
-    oauth_token: string | null;
 }

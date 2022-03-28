@@ -3,6 +3,7 @@ export declare class UserCountAggregate {
     name: number;
     email: number;
     emailVerified: number;
+    image: number;
     roleId: number;
     created_at: number;
     updated_at: number;

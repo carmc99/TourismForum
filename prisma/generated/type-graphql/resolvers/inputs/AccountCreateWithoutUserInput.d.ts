@@ -3,13 +3,11 @@ export declare class AccountCreateWithoutUserInput {
     type: string;
     provider: string;
     providerAccountId: string;
-    refresh_token: string;
-    access_token: string;
-    expires_at: number;
-    token_type: string;
-    scope: string;
-    id_token: string;
-    session_state: string;
-    oauth_token_secret: string;
-    oauth_token: string;
+    refresh_token?: string | undefined;
+    access_token?: string | undefined;
+    expires_at?: number | undefined;
+    token_type?: string | undefined;
+    scope?: string | undefined;
+    id_token?: string | undefined;
+    session_state?: string | undefined;
 }

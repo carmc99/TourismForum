@@ -1,7 +1,7 @@
 export declare class SessionCountAggregate {
     id: number;
-    expires: number;
     sessionToken: number;
     userId: number;
+    expires: number;
     _all: number;
 }

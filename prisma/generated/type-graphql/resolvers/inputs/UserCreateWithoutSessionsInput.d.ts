@@ -5,12 +5,13 @@ import { ProfileCreateNestedOneWithoutUserInput } from "../inputs/ProfileCreateN
 import { RoleCreateNestedOneWithoutUsersInput } from "../inputs/RoleCreateNestedOneWithoutUsersInput";
 export declare class UserCreateWithoutSessionsInput {
     id?: string | undefined;
-    name: string;
-    email: string;
-    emailVerified: Date;
-    role: RoleCreateNestedOneWithoutUsersInput;
-    profile?: ProfileCreateNestedOneWithoutUserInput | undefined;
+    name?: string | undefined;
+    email?: string | undefined;
+    emailVerified?: Date | undefined;
+    image?: string | undefined;
+    role?: RoleCreateNestedOneWithoutUsersInput | undefined;
     accounts?: AccountCreateNestedManyWithoutUserInput | undefined;
+    profile?: ProfileCreateNestedOneWithoutUserInput | undefined;
     posts?: PostCreateNestedManyWithoutAuthorInput | undefined;
     comments?: CommentCreateNestedManyWithoutUserInput | undefined;
     created_at?: Date | undefined;

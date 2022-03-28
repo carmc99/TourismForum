@@ -5,7 +5,7 @@ export declare class SessionScalarWhereWithAggregatesInput {
     OR?: SessionScalarWhereWithAggregatesInput[] | undefined;
     NOT?: SessionScalarWhereWithAggregatesInput[] | undefined;
     id?: StringWithAggregatesFilter | undefined;
-    expires?: DateTimeWithAggregatesFilter | undefined;
     sessionToken?: StringWithAggregatesFilter | undefined;
     userId?: StringWithAggregatesFilter | undefined;
+    expires?: DateTimeWithAggregatesFilter | undefined;
 }

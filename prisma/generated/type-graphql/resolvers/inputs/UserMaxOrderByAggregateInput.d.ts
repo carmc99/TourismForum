@@ -3,6 +3,7 @@ export declare class UserMaxOrderByAggregateInput {
     name?: "asc" | "desc" | undefined;
     email?: "asc" | "desc" | undefined;
     emailVerified?: "asc" | "desc" | undefined;
+    image?: "asc" | "desc" | undefined;
     roleId?: "asc" | "desc" | undefined;
     created_at?: "asc" | "desc" | undefined;
     updated_at?: "asc" | "desc" | undefined;

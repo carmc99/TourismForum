@@ -77,18 +77,6 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountMaxAggregate.prototype, "session_state", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], AccountMaxAggregate.prototype, "oauth_token_secret", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
-], AccountMaxAggregate.prototype, "oauth_token", void 0);
 AccountMaxAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("AccountMaxAggregate", {
         isAbstract: true

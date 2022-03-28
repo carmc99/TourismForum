@@ -12,12 +12,6 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], SessionMinAggregate.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => Date, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", Date)
-], SessionMinAggregate.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
         nullable: true
     }),
@@ -29,6 +23,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], SessionMinAggregate.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", Date)
+], SessionMinAggregate.prototype, "expires", void 0);
 SessionMinAggregate = tslib_1.__decorate([
     TypeGraphQL.ObjectType("SessionMinAggregate", {
         isAbstract: true

@@ -2,6 +2,6 @@ import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdat
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 export declare class SessionUpdateManyMutationInput {
     id?: StringFieldUpdateOperationsInput | undefined;
-    expires?: DateTimeFieldUpdateOperationsInput | undefined;
     sessionToken?: StringFieldUpdateOperationsInput | undefined;
+    expires?: DateTimeFieldUpdateOperationsInput | undefined;
 }

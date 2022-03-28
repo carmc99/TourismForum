@@ -1,6 +1,6 @@
 export declare class UserCount {
-    sessions: number;
     accounts: number;
+    sessions: number;
     posts: number;
     comments: number;
 }

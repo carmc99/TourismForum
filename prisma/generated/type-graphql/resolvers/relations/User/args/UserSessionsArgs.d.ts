@@ -7,5 +7,5 @@ export declare class UserSessionsArgs {
     cursor?: SessionWhereUniqueInput | undefined;
     take?: number | undefined;
     skip?: number | undefined;
-    distinct?: Array<"id" | "expires" | "sessionToken" | "userId"> | undefined;
+    distinct?: Array<"id" | "sessionToken" | "userId" | "expires"> | undefined;
 }

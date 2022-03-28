@@ -18,40 +18,46 @@ tslib_1.__decorate([
 ], UserCreateWithoutProfileInput.prototype, "id", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], UserCreateWithoutProfileInput.prototype, "name", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], UserCreateWithoutProfileInput.prototype, "email", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => Date, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", Date)
 ], UserCreateWithoutProfileInput.prototype, "emailVerified", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], UserCreateWithoutProfileInput.prototype, "image", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleCreateNestedOneWithoutUsersInput_1.RoleCreateNestedOneWithoutUsersInput, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", RoleCreateNestedOneWithoutUsersInput_1.RoleCreateNestedOneWithoutUsersInput)
 ], UserCreateWithoutProfileInput.prototype, "role", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput)
-], UserCreateWithoutProfileInput.prototype, "sessions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountCreateNestedManyWithoutUserInput_1.AccountCreateNestedManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", AccountCreateNestedManyWithoutUserInput_1.AccountCreateNestedManyWithoutUserInput)
 ], UserCreateWithoutProfileInput.prototype, "accounts", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SessionCreateNestedManyWithoutUserInput_1.SessionCreateNestedManyWithoutUserInput)
+], UserCreateWithoutProfileInput.prototype, "sessions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => PostCreateNestedManyWithoutAuthorInput_1.PostCreateNestedManyWithoutAuthorInput, {
         nullable: true

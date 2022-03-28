@@ -1,5 +1,6 @@
-import { IntFilter } from "../inputs/IntFilter";
+import { IntNullableFilter } from "../inputs/IntNullableFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 export declare class AccountScalarWhereInput {
     AND?: AccountScalarWhereInput[] | undefined;
     OR?: AccountScalarWhereInput[] | undefined;
@@ -9,13 +10,11 @@ export declare class AccountScalarWhereInput {
     type?: StringFilter | undefined;
     provider?: StringFilter | undefined;
     providerAccountId?: StringFilter | undefined;
-    refresh_token?: StringFilter | undefined;
-    access_token?: StringFilter | undefined;
-    expires_at?: IntFilter | undefined;
-    token_type?: StringFilter | undefined;
-    scope?: StringFilter | undefined;
-    id_token?: StringFilter | undefined;
-    session_state?: StringFilter | undefined;
-    oauth_token_secret?: StringFilter | undefined;
-    oauth_token?: StringFilter | undefined;
+    refresh_token?: StringNullableFilter | undefined;
+    access_token?: StringNullableFilter | undefined;
+    expires_at?: IntNullableFilter | undefined;
+    token_type?: StringNullableFilter | undefined;
+    scope?: StringNullableFilter | undefined;
+    id_token?: StringNullableFilter | undefined;
+    session_state?: StringNullableFilter | undefined;
 }

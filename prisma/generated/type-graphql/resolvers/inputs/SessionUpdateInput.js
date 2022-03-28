@@ -15,17 +15,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
 ], SessionUpdateInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
-], SessionUpdateInput.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
 ], SessionUpdateInput.prototype, "sessionToken", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+], SessionUpdateInput.prototype, "expires", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserUpdateOneRequiredWithoutSessionsInput_1.UserUpdateOneRequiredWithoutSessionsInput, {
         nullable: true

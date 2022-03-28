@@ -18,12 +18,6 @@ tslib_1.__decorate([
         nullable: true
     }),
     tslib_1.__metadata("design:type", String)
-], SessionOrderByWithRelationInput.prototype, "expires", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", String)
 ], SessionOrderByWithRelationInput.prototype, "sessionToken", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
@@ -31,6 +25,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", String)
 ], SessionOrderByWithRelationInput.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], SessionOrderByWithRelationInput.prototype, "expires", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => UserOrderByWithRelationInput_1.UserOrderByWithRelationInput, {
         nullable: true

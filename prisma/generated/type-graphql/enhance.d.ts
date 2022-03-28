@@ -8,6 +8,7 @@ declare const crudResolversMap: {
     Country: typeof crudResolvers.CountryCrudResolver;
     Location: typeof crudResolvers.LocationCrudResolver;
     Session: typeof crudResolvers.SessionCrudResolver;
+    VerificationToken: typeof crudResolvers.VerificationTokenCrudResolver;
     Account: typeof crudResolvers.AccountCrudResolver;
     Pages: typeof crudResolvers.PagesCrudResolver;
     Role: typeof crudResolvers.RoleCrudResolver;

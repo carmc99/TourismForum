@@ -6,8 +6,10 @@ const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
 const AccountUpdateManyWithoutUserInput_1 = require("../inputs/AccountUpdateManyWithoutUserInput");
 const CommentUpdateManyWithoutUserInput_1 = require("../inputs/CommentUpdateManyWithoutUserInput");
 const DateTimeFieldUpdateOperationsInput_1 = require("../inputs/DateTimeFieldUpdateOperationsInput");
+const NullableDateTimeFieldUpdateOperationsInput_1 = require("../inputs/NullableDateTimeFieldUpdateOperationsInput");
+const NullableStringFieldUpdateOperationsInput_1 = require("../inputs/NullableStringFieldUpdateOperationsInput");
 const PostUpdateManyWithoutAuthorInput_1 = require("../inputs/PostUpdateManyWithoutAuthorInput");
-const RoleUpdateOneRequiredWithoutUsersInput_1 = require("../inputs/RoleUpdateOneRequiredWithoutUsersInput");
+const RoleUpdateOneWithoutUsersInput_1 = require("../inputs/RoleUpdateOneWithoutUsersInput");
 const SessionUpdateManyWithoutUserInput_1 = require("../inputs/SessionUpdateManyWithoutUserInput");
 const StringFieldUpdateOperationsInput_1 = require("../inputs/StringFieldUpdateOperationsInput");
 let UserUpdateWithoutProfileInput = class UserUpdateWithoutProfileInput {
@@ -19,41 +21,47 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
 ], UserUpdateWithoutProfileInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
+    TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
+    tslib_1.__metadata("design:type", NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput)
 ], UserUpdateWithoutProfileInput.prototype, "name", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
+    TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
+    tslib_1.__metadata("design:type", NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput)
 ], UserUpdateWithoutProfileInput.prototype, "email", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+    TypeGraphQL.Field(_type => NullableDateTimeFieldUpdateOperationsInput_1.NullableDateTimeFieldUpdateOperationsInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+    tslib_1.__metadata("design:type", NullableDateTimeFieldUpdateOperationsInput_1.NullableDateTimeFieldUpdateOperationsInput)
 ], UserUpdateWithoutProfileInput.prototype, "emailVerified", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => RoleUpdateOneRequiredWithoutUsersInput_1.RoleUpdateOneRequiredWithoutUsersInput, {
+    TypeGraphQL.Field(_type => NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", RoleUpdateOneRequiredWithoutUsersInput_1.RoleUpdateOneRequiredWithoutUsersInput)
-], UserUpdateWithoutProfileInput.prototype, "role", void 0);
+    tslib_1.__metadata("design:type", NullableStringFieldUpdateOperationsInput_1.NullableStringFieldUpdateOperationsInput)
+], UserUpdateWithoutProfileInput.prototype, "image", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => SessionUpdateManyWithoutUserInput_1.SessionUpdateManyWithoutUserInput, {
+    TypeGraphQL.Field(_type => RoleUpdateOneWithoutUsersInput_1.RoleUpdateOneWithoutUsersInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", SessionUpdateManyWithoutUserInput_1.SessionUpdateManyWithoutUserInput)
-], UserUpdateWithoutProfileInput.prototype, "sessions", void 0);
+    tslib_1.__metadata("design:type", RoleUpdateOneWithoutUsersInput_1.RoleUpdateOneWithoutUsersInput)
+], UserUpdateWithoutProfileInput.prototype, "role", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => AccountUpdateManyWithoutUserInput_1.AccountUpdateManyWithoutUserInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", AccountUpdateManyWithoutUserInput_1.AccountUpdateManyWithoutUserInput)
 ], UserUpdateWithoutProfileInput.prototype, "accounts", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SessionUpdateManyWithoutUserInput_1.SessionUpdateManyWithoutUserInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", SessionUpdateManyWithoutUserInput_1.SessionUpdateManyWithoutUserInput)
+], UserUpdateWithoutProfileInput.prototype, "sessions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => PostUpdateManyWithoutAuthorInput_1.PostUpdateManyWithoutAuthorInput, {
         nullable: true

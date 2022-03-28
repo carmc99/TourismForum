@@ -33,12 +33,6 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
 ], SessionScalarWhereInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
-], SessionScalarWhereInput.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFilter_1.StringFilter, {
         nullable: true
     }),
@@ -50,6 +44,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringFilter_1.StringFilter)
 ], SessionScalarWhereInput.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFilter_1.DateTimeFilter)
+], SessionScalarWhereInput.prototype, "expires", void 0);
 SessionScalarWhereInput = SessionScalarWhereInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("SessionScalarWhereInput", {
         isAbstract: true

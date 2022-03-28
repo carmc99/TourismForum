@@ -31,58 +31,46 @@ tslib_1.__decorate([
 ], AccountCreateManyUserInput.prototype, "providerAccountId", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "refresh_token", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "access_token", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", Number)
 ], AccountCreateManyUserInput.prototype, "expires_at", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "token_type", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "scope", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "id_token", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => String, {
-        nullable: false
+        nullable: true
     }),
     tslib_1.__metadata("design:type", String)
 ], AccountCreateManyUserInput.prototype, "session_state", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", String)
-], AccountCreateManyUserInput.prototype, "oauth_token_secret", void 0);
-tslib_1.__decorate([
-    TypeGraphQL.Field(_type => String, {
-        nullable: false
-    }),
-    tslib_1.__metadata("design:type", String)
-], AccountCreateManyUserInput.prototype, "oauth_token", void 0);
 AccountCreateManyUserInput = tslib_1.__decorate([
     TypeGraphQL.InputType("AccountCreateManyUserInput", {
         isAbstract: true

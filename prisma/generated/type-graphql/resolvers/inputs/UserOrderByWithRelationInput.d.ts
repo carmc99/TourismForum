@@ -9,11 +9,12 @@ export declare class UserOrderByWithRelationInput {
     name?: "asc" | "desc" | undefined;
     email?: "asc" | "desc" | undefined;
     emailVerified?: "asc" | "desc" | undefined;
+    image?: "asc" | "desc" | undefined;
     role?: RoleOrderByWithRelationInput | undefined;
     roleId?: "asc" | "desc" | undefined;
-    profile?: ProfileOrderByWithRelationInput | undefined;
-    sessions?: SessionOrderByRelationAggregateInput | undefined;
     accounts?: AccountOrderByRelationAggregateInput | undefined;
+    sessions?: SessionOrderByRelationAggregateInput | undefined;
+    profile?: ProfileOrderByWithRelationInput | undefined;
     posts?: PostOrderByRelationAggregateInput | undefined;
     comments?: CommentOrderByRelationAggregateInput | undefined;
     created_at?: "asc" | "desc" | undefined;

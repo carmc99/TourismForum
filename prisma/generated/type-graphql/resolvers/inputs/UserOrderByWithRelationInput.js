@@ -37,6 +37,12 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], UserOrderByWithRelationInput.prototype, "emailVerified", void 0);
 tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", String)
+], UserOrderByWithRelationInput.prototype, "image", void 0);
+tslib_1.__decorate([
     TypeGraphQL.Field(_type => RoleOrderByWithRelationInput_1.RoleOrderByWithRelationInput, {
         nullable: true
     }),
@@ -49,11 +55,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], UserOrderByWithRelationInput.prototype, "roleId", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => ProfileOrderByWithRelationInput_1.ProfileOrderByWithRelationInput, {
+    TypeGraphQL.Field(_type => AccountOrderByRelationAggregateInput_1.AccountOrderByRelationAggregateInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", ProfileOrderByWithRelationInput_1.ProfileOrderByWithRelationInput)
-], UserOrderByWithRelationInput.prototype, "profile", void 0);
+    tslib_1.__metadata("design:type", AccountOrderByRelationAggregateInput_1.AccountOrderByRelationAggregateInput)
+], UserOrderByWithRelationInput.prototype, "accounts", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => SessionOrderByRelationAggregateInput_1.SessionOrderByRelationAggregateInput, {
         nullable: true
@@ -61,11 +67,11 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", SessionOrderByRelationAggregateInput_1.SessionOrderByRelationAggregateInput)
 ], UserOrderByWithRelationInput.prototype, "sessions", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => AccountOrderByRelationAggregateInput_1.AccountOrderByRelationAggregateInput, {
+    TypeGraphQL.Field(_type => ProfileOrderByWithRelationInput_1.ProfileOrderByWithRelationInput, {
         nullable: true
     }),
-    tslib_1.__metadata("design:type", AccountOrderByRelationAggregateInput_1.AccountOrderByRelationAggregateInput)
-], UserOrderByWithRelationInput.prototype, "accounts", void 0);
+    tslib_1.__metadata("design:type", ProfileOrderByWithRelationInput_1.ProfileOrderByWithRelationInput)
+], UserOrderByWithRelationInput.prototype, "profile", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => PostOrderByRelationAggregateInput_1.PostOrderByRelationAggregateInput, {
         nullable: true

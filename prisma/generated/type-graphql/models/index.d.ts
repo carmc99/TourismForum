@@ -9,3 +9,4 @@ export { Profile } from "./Profile";
 export { Role } from "./Role";
 export { Session } from "./Session";
 export { User } from "./User";
+export { VerificationToken } from "./VerificationToken";

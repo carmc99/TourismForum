@@ -16,8 +16,6 @@ export declare class AccountOrderByWithAggregationInput {
     scope?: "asc" | "desc" | undefined;
     id_token?: "asc" | "desc" | undefined;
     session_state?: "asc" | "desc" | undefined;
-    oauth_token_secret?: "asc" | "desc" | undefined;
-    oauth_token?: "asc" | "desc" | undefined;
     _count?: AccountCountOrderByAggregateInput | undefined;
     _avg?: AccountAvgOrderByAggregateInput | undefined;
     _max?: AccountMaxOrderByAggregateInput | undefined;

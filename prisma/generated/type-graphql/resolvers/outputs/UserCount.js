@@ -10,13 +10,13 @@ tslib_1.__decorate([
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "sessions", void 0);
+], UserCount.prototype, "accounts", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false
     }),
     tslib_1.__metadata("design:type", Number)
-], UserCount.prototype, "accounts", void 0);
+], UserCount.prototype, "sessions", void 0);
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, {
         nullable: false

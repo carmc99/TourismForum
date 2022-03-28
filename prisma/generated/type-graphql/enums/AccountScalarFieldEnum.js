@@ -17,8 +17,6 @@ var AccountScalarFieldEnum;
     AccountScalarFieldEnum["scope"] = "scope";
     AccountScalarFieldEnum["id_token"] = "id_token";
     AccountScalarFieldEnum["session_state"] = "session_state";
-    AccountScalarFieldEnum["oauth_token_secret"] = "oauth_token_secret";
-    AccountScalarFieldEnum["oauth_token"] = "oauth_token";
 })(AccountScalarFieldEnum = exports.AccountScalarFieldEnum || (exports.AccountScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(AccountScalarFieldEnum, {
     name: "AccountScalarFieldEnum",

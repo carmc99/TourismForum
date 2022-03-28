@@ -11,7 +11,5 @@ export declare class AccountCountAggregate {
     scope: number;
     id_token: number;
     session_state: number;
-    oauth_token_secret: number;
-    oauth_token: number;
     _all: number;
 }

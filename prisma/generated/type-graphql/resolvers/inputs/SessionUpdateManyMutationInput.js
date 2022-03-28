@@ -14,17 +14,17 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
 ], SessionUpdateManyMutationInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
-], SessionUpdateManyMutationInput.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, {
         nullable: true
     }),
     tslib_1.__metadata("design:type", StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput)
 ], SessionUpdateManyMutationInput.prototype, "sessionToken", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput)
+], SessionUpdateManyMutationInput.prototype, "expires", void 0);
 SessionUpdateManyMutationInput = tslib_1.__decorate([
     TypeGraphQL.InputType("SessionUpdateManyMutationInput", {
         isAbstract: true

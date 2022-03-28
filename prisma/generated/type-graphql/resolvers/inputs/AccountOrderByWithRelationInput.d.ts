@@ -2,7 +2,6 @@ import { UserOrderByWithRelationInput } from "../inputs/UserOrderByWithRelationI
 export declare class AccountOrderByWithRelationInput {
     id?: "asc" | "desc" | undefined;
     userId?: "asc" | "desc" | undefined;
-    user?: UserOrderByWithRelationInput | undefined;
     type?: "asc" | "desc" | undefined;
     provider?: "asc" | "desc" | undefined;
     providerAccountId?: "asc" | "desc" | undefined;
@@ -13,6 +12,5 @@ export declare class AccountOrderByWithRelationInput {
     scope?: "asc" | "desc" | undefined;
     id_token?: "asc" | "desc" | undefined;
     session_state?: "asc" | "desc" | undefined;
-    oauth_token_secret?: "asc" | "desc" | undefined;
-    oauth_token?: "asc" | "desc" | undefined;
+    user?: UserOrderByWithRelationInput | undefined;
 }

@@ -1,18 +1,21 @@
 import { AccountUpdateManyWithoutUserInput } from "../inputs/AccountUpdateManyWithoutUserInput";
 import { CommentUpdateManyWithoutUserInput } from "../inputs/CommentUpdateManyWithoutUserInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { NullableDateTimeFieldUpdateOperationsInput } from "../inputs/NullableDateTimeFieldUpdateOperationsInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { PostUpdateManyWithoutAuthorInput } from "../inputs/PostUpdateManyWithoutAuthorInput";
-import { RoleUpdateOneRequiredWithoutUsersInput } from "../inputs/RoleUpdateOneRequiredWithoutUsersInput";
+import { RoleUpdateOneWithoutUsersInput } from "../inputs/RoleUpdateOneWithoutUsersInput";
 import { SessionUpdateManyWithoutUserInput } from "../inputs/SessionUpdateManyWithoutUserInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 export declare class UserUpdateWithoutProfileInput {
     id?: StringFieldUpdateOperationsInput | undefined;
-    name?: StringFieldUpdateOperationsInput | undefined;
-    email?: StringFieldUpdateOperationsInput | undefined;
-    emailVerified?: DateTimeFieldUpdateOperationsInput | undefined;
-    role?: RoleUpdateOneRequiredWithoutUsersInput | undefined;
-    sessions?: SessionUpdateManyWithoutUserInput | undefined;
+    name?: NullableStringFieldUpdateOperationsInput | undefined;
+    email?: NullableStringFieldUpdateOperationsInput | undefined;
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | undefined;
+    image?: NullableStringFieldUpdateOperationsInput | undefined;
+    role?: RoleUpdateOneWithoutUsersInput | undefined;
     accounts?: AccountUpdateManyWithoutUserInput | undefined;
+    sessions?: SessionUpdateManyWithoutUserInput | undefined;
     posts?: PostUpdateManyWithoutAuthorInput | undefined;
     comments?: CommentUpdateManyWithoutUserInput | undefined;
     created_at?: DateTimeFieldUpdateOperationsInput | undefined;

@@ -33,12 +33,6 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
 ], SessionScalarWhereWithAggregatesInput.prototype, "id", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, {
-        nullable: true
-    }),
-    tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
-], SessionScalarWhereWithAggregatesInput.prototype, "expires", void 0);
-tslib_1.__decorate([
     TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, {
         nullable: true
     }),
@@ -50,6 +44,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", StringWithAggregatesFilter_1.StringWithAggregatesFilter)
 ], SessionScalarWhereWithAggregatesInput.prototype, "userId", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, {
+        nullable: true
+    }),
+    tslib_1.__metadata("design:type", DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter)
+], SessionScalarWhereWithAggregatesInput.prototype, "expires", void 0);
 SessionScalarWhereWithAggregatesInput = SessionScalarWhereWithAggregatesInput_1 = tslib_1.__decorate([
     TypeGraphQL.InputType("SessionScalarWhereWithAggregatesInput", {
         isAbstract: true

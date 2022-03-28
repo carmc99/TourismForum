@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserScalarFieldEnum = exports.SortOrder = exports.SessionScalarFieldEnum = exports.RoleScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.PostScalarFieldEnum = exports.PagesScalarFieldEnum = exports.LocationScalarFieldEnum = exports.HotelScalarFieldEnum = exports.CountryScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Biome = exports.AccountScalarFieldEnum = void 0;
+exports.VerificationTokenScalarFieldEnum = exports.UserScalarFieldEnum = exports.SortOrder = exports.SessionScalarFieldEnum = exports.RoleScalarFieldEnum = exports.QueryMode = exports.ProfileScalarFieldEnum = exports.PostScalarFieldEnum = exports.PagesScalarFieldEnum = exports.LocationScalarFieldEnum = exports.HotelScalarFieldEnum = exports.CountryScalarFieldEnum = exports.CommentScalarFieldEnum = exports.Biome = exports.AccountScalarFieldEnum = void 0;
 var AccountScalarFieldEnum_1 = require("./AccountScalarFieldEnum");
 Object.defineProperty(exports, "AccountScalarFieldEnum", { enumerable: true, get: function () { return AccountScalarFieldEnum_1.AccountScalarFieldEnum; } });
 var Biome_1 = require("./Biome");
@@ -29,3 +29,5 @@ var SortOrder_1 = require("./SortOrder");
 Object.defineProperty(exports, "SortOrder", { enumerable: true, get: function () { return SortOrder_1.SortOrder; } });
 var UserScalarFieldEnum_1 = require("./UserScalarFieldEnum");
 Object.defineProperty(exports, "UserScalarFieldEnum", { enumerable: true, get: function () { return UserScalarFieldEnum_1.UserScalarFieldEnum; } });
+var VerificationTokenScalarFieldEnum_1 = require("./VerificationTokenScalarFieldEnum");
+Object.defineProperty(exports, "VerificationTokenScalarFieldEnum", { enumerable: true, get: function () { return VerificationTokenScalarFieldEnum_1.VerificationTokenScalarFieldEnum; } });

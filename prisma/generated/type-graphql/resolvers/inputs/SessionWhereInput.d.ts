@@ -6,8 +6,8 @@ export declare class SessionWhereInput {
     OR?: SessionWhereInput[] | undefined;
     NOT?: SessionWhereInput[] | undefined;
     id?: StringFilter | undefined;
-    expires?: DateTimeFilter | undefined;
     sessionToken?: StringFilter | undefined;
     userId?: StringFilter | undefined;
+    expires?: DateTimeFilter | undefined;
     user?: UserRelationFilter | undefined;
 }
