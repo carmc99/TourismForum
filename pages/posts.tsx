@@ -1,5 +1,6 @@
-import React from 'react';
-import safeJsonStringify from 'safe-json-stringify';
+import React from "react";
+import safeJsonStringify from "safe-json-stringify";
+import Head from "next/head";
 
 export async function getServerSideProps() {
   // const productos = await prisma.producto.findMany({
@@ -15,19 +16,26 @@ export async function getServerSideProps() {
   //     },
   //   },
   // });
-  const posts = [{
+  const posts = [
+    {
       id: 1,
       nombre: "GG",
-  }];
+    },
+  ];
   return {
     props: { posts: JSON.parse(safeJsonStringify(posts)) }, // will be passed to the page component as props
   };
 }
 
 const Posts = ({ posts }) => {
-  console.log('Esta es la variable en el front', posts);
   return (
     <div>
+      <Head>
+        <title>Posts</title>
+        <meta name="description" content="Posts" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div>Tabla producos</div>
       {posts &&
         posts.map((p) => {

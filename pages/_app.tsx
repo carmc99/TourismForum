@@ -1,38 +1,22 @@
-import '../styles/globals.css'
-import MainLayout from '../layouts/MainLayout'
-import { SessionProvider } from 'next-auth/react';
-import { UserProvider } from '@auth0/nextjs-auth0';
-import { ApolloProvider } from "@apollo/client";
-import type { AppProps } from 'next/app'
-import Layout from "../components/Layout";
-import {client} from "../lib/apollo"
+import "../styles/globals.css";
+import MainLayout from "../layouts/MainLayout";
+import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
+import NavBar from "../components/Layout/NavBar";
+import Footer from "../components/Layout/Footer";
 
-
-function MyApp({ Component, pageProps: { session, ...pageProps } }:AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
+      <div>
+        <NavBar />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+        <Footer></Footer>
+      </div>
     </SessionProvider>
   );
 }
 
-export default MyApp
-
-/*
-function MyApp({ Component, pageProps }) {
-  return (
-    <UserProvider>
-      <ApolloProvider client={client}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
-    </UserProvider>
-  );
-}
-
 export default MyApp;
-*/
-
