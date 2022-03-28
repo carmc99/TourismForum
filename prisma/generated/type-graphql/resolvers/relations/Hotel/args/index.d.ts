@@ -1,0 +1,1 @@
+export { HotelPostsArgs } from "./HotelPostsArgs";

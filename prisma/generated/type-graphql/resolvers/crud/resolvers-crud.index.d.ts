@@ -1,0 +1,11 @@
+export { AccountCrudResolver } from "./Account/AccountCrudResolver";
+export { CommentCrudResolver } from "./Comment/CommentCrudResolver";
+export { CountryCrudResolver } from "./Country/CountryCrudResolver";
+export { HotelCrudResolver } from "./Hotel/HotelCrudResolver";
+export { LocationCrudResolver } from "./Location/LocationCrudResolver";
+export { PagesCrudResolver } from "./Pages/PagesCrudResolver";
+export { PostCrudResolver } from "./Post/PostCrudResolver";
+export { ProfileCrudResolver } from "./Profile/ProfileCrudResolver";
+export { RoleCrudResolver } from "./Role/RoleCrudResolver";
+export { SessionCrudResolver } from "./Session/SessionCrudResolver";
+export { UserCrudResolver } from "./User/UserCrudResolver";

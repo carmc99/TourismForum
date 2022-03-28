@@ -2,13 +2,19 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider           = "typegraphql-prisma"
+  output             = "../prisma/generated/type-graphql"
+  emitTranspiledCode = true
+}
+
 datasource db {
   provider = "postgresql"
   url = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Country {
@@ -75,7 +81,7 @@ model Role {
 model User {
   id String @id @default(cuid())
   name String
-  email String
+  email String @unique
   emailVerified DateTime
   role Role @relation(fields: [roleId], references: [id])
   roleId String

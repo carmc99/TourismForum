@@ -1,0 +1,8 @@
+import { CountryCountAggregate } from "../outputs/CountryCountAggregate";
+import { CountryMaxAggregate } from "../outputs/CountryMaxAggregate";
+import { CountryMinAggregate } from "../outputs/CountryMinAggregate";
+export declare class AggregateCountry {
+    _count: CountryCountAggregate | null;
+    _min: CountryMinAggregate | null;
+    _max: CountryMaxAggregate | null;
+}

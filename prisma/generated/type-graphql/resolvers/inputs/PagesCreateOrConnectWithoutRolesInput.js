@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PagesCreateOrConnectWithoutRolesInput = void 0;
+const tslib_1 = require("tslib");
+const TypeGraphQL = tslib_1.__importStar(require("type-graphql"));
+const PagesCreateWithoutRolesInput_1 = require("../inputs/PagesCreateWithoutRolesInput");
+const PagesWhereUniqueInput_1 = require("../inputs/PagesWhereUniqueInput");
+let PagesCreateOrConnectWithoutRolesInput = class PagesCreateOrConnectWithoutRolesInput {
+};
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => PagesWhereUniqueInput_1.PagesWhereUniqueInput, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", PagesWhereUniqueInput_1.PagesWhereUniqueInput)
+], PagesCreateOrConnectWithoutRolesInput.prototype, "where", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => PagesCreateWithoutRolesInput_1.PagesCreateWithoutRolesInput, {
+        nullable: false
+    }),
+    tslib_1.__metadata("design:type", PagesCreateWithoutRolesInput_1.PagesCreateWithoutRolesInput)
+], PagesCreateOrConnectWithoutRolesInput.prototype, "create", void 0);
+PagesCreateOrConnectWithoutRolesInput = tslib_1.__decorate([
+    TypeGraphQL.InputType("PagesCreateOrConnectWithoutRolesInput", {
+        isAbstract: true
+    })
+], PagesCreateOrConnectWithoutRolesInput);
+exports.PagesCreateOrConnectWithoutRolesInput = PagesCreateOrConnectWithoutRolesInput;

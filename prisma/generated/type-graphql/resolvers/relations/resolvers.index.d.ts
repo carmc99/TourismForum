@@ -1,0 +1,11 @@
+export { AccountRelationsResolver } from "./Account/AccountRelationsResolver";
+export { CommentRelationsResolver } from "./Comment/CommentRelationsResolver";
+export { CountryRelationsResolver } from "./Country/CountryRelationsResolver";
+export { HotelRelationsResolver } from "./Hotel/HotelRelationsResolver";
+export { LocationRelationsResolver } from "./Location/LocationRelationsResolver";
+export { PagesRelationsResolver } from "./Pages/PagesRelationsResolver";
+export { PostRelationsResolver } from "./Post/PostRelationsResolver";
+export { ProfileRelationsResolver } from "./Profile/ProfileRelationsResolver";
+export { RoleRelationsResolver } from "./Role/RoleRelationsResolver";
+export { SessionRelationsResolver } from "./Session/SessionRelationsResolver";
+export { UserRelationsResolver } from "./User/UserRelationsResolver";

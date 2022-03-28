@@ -1,0 +1,12 @@
+export declare enum Biome {
+    TUNDRA = "TUNDRA",
+    BOSQUE = "BOSQUE",
+    PRADERA = "PRADERA",
+    CHAPARRAL = "CHAPARRAL",
+    DESIERTO = "DESIERTO",
+    TAIGA = "TAIGA",
+    ESTEPA = "ESTEPA",
+    SELVA_TROPICAL = "SELVA_TROPICAL",
+    SABANA = "SABANA",
+    MANGLAR = "MANGLAR"
+}

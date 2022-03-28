@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateCountryArgs } from "./args/AggregateCountryArgs";
+import { CreateCountryArgs } from "./args/CreateCountryArgs";
+import { CreateManyCountryArgs } from "./args/CreateManyCountryArgs";
+import { DeleteCountryArgs } from "./args/DeleteCountryArgs";
+import { DeleteManyCountryArgs } from "./args/DeleteManyCountryArgs";
+import { FindFirstCountryArgs } from "./args/FindFirstCountryArgs";
+import { FindManyCountryArgs } from "./args/FindManyCountryArgs";
+import { FindUniqueCountryArgs } from "./args/FindUniqueCountryArgs";
+import { GroupByCountryArgs } from "./args/GroupByCountryArgs";
+import { UpdateCountryArgs } from "./args/UpdateCountryArgs";
+import { UpdateManyCountryArgs } from "./args/UpdateManyCountryArgs";
+import { UpsertCountryArgs } from "./args/UpsertCountryArgs";
+import { Country } from "../../../models/Country";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateCountry } from "../../outputs/AggregateCountry";
+import { CountryGroupBy } from "../../outputs/CountryGroupBy";
+export declare class CountryCrudResolver {
+    country(ctx: any, info: GraphQLResolveInfo, args: FindUniqueCountryArgs): Promise<Country | null>;
+    findFirstCountry(ctx: any, info: GraphQLResolveInfo, args: FindFirstCountryArgs): Promise<Country | null>;
+    countries(ctx: any, info: GraphQLResolveInfo, args: FindManyCountryArgs): Promise<Country[]>;
+    createCountry(ctx: any, info: GraphQLResolveInfo, args: CreateCountryArgs): Promise<Country>;
+    createManyCountry(ctx: any, info: GraphQLResolveInfo, args: CreateManyCountryArgs): Promise<AffectedRowsOutput>;
+    deleteCountry(ctx: any, info: GraphQLResolveInfo, args: DeleteCountryArgs): Promise<Country | null>;
+    updateCountry(ctx: any, info: GraphQLResolveInfo, args: UpdateCountryArgs): Promise<Country | null>;
+    deleteManyCountry(ctx: any, info: GraphQLResolveInfo, args: DeleteManyCountryArgs): Promise<AffectedRowsOutput>;
+    updateManyCountry(ctx: any, info: GraphQLResolveInfo, args: UpdateManyCountryArgs): Promise<AffectedRowsOutput>;
+    upsertCountry(ctx: any, info: GraphQLResolveInfo, args: UpsertCountryArgs): Promise<Country>;
+    aggregateCountry(ctx: any, info: GraphQLResolveInfo, args: AggregateCountryArgs): Promise<AggregateCountry>;
+    groupByCountry(ctx: any, info: GraphQLResolveInfo, args: GroupByCountryArgs): Promise<CountryGroupBy[]>;
+}

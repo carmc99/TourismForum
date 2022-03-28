@@ -1,0 +1,31 @@
+import { GraphQLResolveInfo } from "graphql";
+import { AggregateHotelArgs } from "./args/AggregateHotelArgs";
+import { CreateHotelArgs } from "./args/CreateHotelArgs";
+import { CreateManyHotelArgs } from "./args/CreateManyHotelArgs";
+import { DeleteHotelArgs } from "./args/DeleteHotelArgs";
+import { DeleteManyHotelArgs } from "./args/DeleteManyHotelArgs";
+import { FindFirstHotelArgs } from "./args/FindFirstHotelArgs";
+import { FindManyHotelArgs } from "./args/FindManyHotelArgs";
+import { FindUniqueHotelArgs } from "./args/FindUniqueHotelArgs";
+import { GroupByHotelArgs } from "./args/GroupByHotelArgs";
+import { UpdateHotelArgs } from "./args/UpdateHotelArgs";
+import { UpdateManyHotelArgs } from "./args/UpdateManyHotelArgs";
+import { UpsertHotelArgs } from "./args/UpsertHotelArgs";
+import { Hotel } from "../../../models/Hotel";
+import { AffectedRowsOutput } from "../../outputs/AffectedRowsOutput";
+import { AggregateHotel } from "../../outputs/AggregateHotel";
+import { HotelGroupBy } from "../../outputs/HotelGroupBy";
+export declare class HotelCrudResolver {
+    hotel(ctx: any, info: GraphQLResolveInfo, args: FindUniqueHotelArgs): Promise<Hotel | null>;
+    findFirstHotel(ctx: any, info: GraphQLResolveInfo, args: FindFirstHotelArgs): Promise<Hotel | null>;
+    hotels(ctx: any, info: GraphQLResolveInfo, args: FindManyHotelArgs): Promise<Hotel[]>;
+    createHotel(ctx: any, info: GraphQLResolveInfo, args: CreateHotelArgs): Promise<Hotel>;
+    createManyHotel(ctx: any, info: GraphQLResolveInfo, args: CreateManyHotelArgs): Promise<AffectedRowsOutput>;
+    deleteHotel(ctx: any, info: GraphQLResolveInfo, args: DeleteHotelArgs): Promise<Hotel | null>;
+    updateHotel(ctx: any, info: GraphQLResolveInfo, args: UpdateHotelArgs): Promise<Hotel | null>;
+    deleteManyHotel(ctx: any, info: GraphQLResolveInfo, args: DeleteManyHotelArgs): Promise<AffectedRowsOutput>;
+    updateManyHotel(ctx: any, info: GraphQLResolveInfo, args: UpdateManyHotelArgs): Promise<AffectedRowsOutput>;
+    upsertHotel(ctx: any, info: GraphQLResolveInfo, args: UpsertHotelArgs): Promise<Hotel>;
+    aggregateHotel(ctx: any, info: GraphQLResolveInfo, args: AggregateHotelArgs): Promise<AggregateHotel>;
+    groupByHotel(ctx: any, info: GraphQLResolveInfo, args: GroupByHotelArgs): Promise<HotelGroupBy[]>;
+}
