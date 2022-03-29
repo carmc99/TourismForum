@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
     if (session.user.estado === "Pendiente") {
       return <div>Usted no ha sido autorizado para ingresar aun</div>;
     }
-    return <main className="h-full w-full bg-gray-800">{children}</main>;
+    return <main>{children}</main>;
   }
 };
 
