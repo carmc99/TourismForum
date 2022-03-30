@@ -1,43 +1,75 @@
-import React from 'react';
-import { prisma } from '../../lib/prisma';
-import gql from 'graphql-tag';
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { User } from "../../prisma/generated/type-graphql";
+import { useQuery, gql } from "@apollo/client";
 
-export const QUERY_TOOL = gql`
-    query Tool($id: Int!) {
-        tool(where: { id: $id }) {
-            id
-            name
+const GET_USER_QUERY = gql`
+  query User($where: UserWhereUniqueInput!) {
+    user(where: $where) {
+      name
+      email
+      emailVerified
+      image
+      created_at
+      updated_at
+      role {
+        name
+      }
+      profile {
+        phone
+        address
+        image
+        gender
+        country {
+          name
         }
+      }
     }
+  }
 `;
 
-export const getServerSideProps = async ({ params }) => {
-  const id = params.id;
-  const user = await prisma.user.findUnique({
-    where: { id },
-    select: {
-      id: true,
-      name: true,
+const Profile: NextPage = () => {
+  const router = useRouter();
+  const id = router.query.id;
+  const { loading, error, data } = useQuery(GET_USER_QUERY, {
+    variables: {
+      where: {
+        id: id,
+      },
     },
+    fetchPolicy: "cache-and-network",
   });
-  return {
-    props: {
-      user,
-    },
-  };
-};
-
-const User = ({ user }) => {
-  console.log('Esta es la variable en el front', user);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>${error.message}</div>;
+  const user = data.user;
+  console.table(user);
   return (
-    <div>
-      <div>Tabla usuario</div>
-      {user &&
-        user.map((u) => {
-          return <div key={u.id}>{u.name}</div>;
-        })}
+    <div className="flex flex-wrap">
+      <Head>
+        <title>{id}</title>
+        <meta name="description" content="Home" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="bg-white w-full justify-center items-center overflow-hidden ">
+        <div className="relative h-40">
+          <img
+            className="absolute h-full w-full object-cover"
+            src={user.image}
+          />
+        </div>
+        <div className="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+          <img className="object-cover w-full h-full" src={user.image} />
+        </div>
+        <div className="mt-16">
+          <h1 className="text-lg text-center font-semibold">{user.name}</h1>
+          <p className="text-sm text-gray-600 text-center">{user.email}</p>
+          <p className="text-sm text-gray-600 text-center">{user.role?.name}</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default User;
+export default Profile;

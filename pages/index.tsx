@@ -24,7 +24,7 @@ const GET_POST_QUERY = gql`
       }
       hotel {
         price_per_night
-        name,
+        name
         lunch_included
       }
     }
@@ -39,8 +39,11 @@ const Home: NextPage = () => {
   if (error) return <div>${error.message}</div>;
   const { posts } = data;
   return (
-    <div className="container m-10">
-      <div className="flex flex-wrap -mx-4">
+    <div>
+      <div className="flex flex-row mx-4 mb-6">
+        <div className="basis 1/2 bg-blue-300 mx-4 text-left">GG</div>
+      </div>
+      <div className="flex flex-wrap mx-4">
         <Head>
           <title>Home</title>
           <meta name="description" content="Home" />

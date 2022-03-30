@@ -1,13 +1,11 @@
-import Link from "next/link";
 import React from "react";
 import { Post } from "../../prisma/generated/type-graphql";
 
-const PostContainer = (post: Post) => {
+const PostContainerExtended = (post: Post) => {
   console.log(post);
   return (
-    <Link href={"/posts/" + post.id}>
-      <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 cursor-pointer">
-        <a className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+      <div className="w-full">
+        <a className="c-card block bg-white rounded-lg overflow-hidden">
           <div className="relative pb-48 overflow-hidden">
             <img
               className="absolute inset-0 h-full w-full object-cover"
@@ -105,8 +103,7 @@ const PostContainer = (post: Post) => {
           </div>
         </a>
       </div>
-    </Link>
   );
 };
 
-export default PostContainer;
+export default PostContainerExtended;
