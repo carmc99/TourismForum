@@ -33,6 +33,7 @@ const GET_POST_QUERY = gql`
       comments {
         user {
           name
+          image
         }
         score
         description

@@ -1,11 +1,11 @@
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 function Nav() {
   const user = useSession().data;
   return (
-    <nav className="bg-blue-600">
+    <nav className="bg-blue-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-end h-16">
           <div className="flex items-center">

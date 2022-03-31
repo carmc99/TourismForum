@@ -1,3 +1,28 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 0px);
+    flex-direction: column;
+}
+
+nav {
+    height: 70px;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+footer {
+    padding: 0px;
+    height: 90px;
+}
+
+.list-comments{
+ min-height: 40px;
+
+}

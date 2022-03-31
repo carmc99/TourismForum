@@ -1,4 +1,4 @@
-
+/*
 .footer {
   position: fixed;
   height: 50px;
@@ -13,13 +13,7 @@
   justify-content: center;
   align-items: center;
 }
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
+*/
 
 .cursor-pointer{
   cursor: pointer;
