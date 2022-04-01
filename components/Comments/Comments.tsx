@@ -5,7 +5,6 @@ import CommentForm from "./CommentForm";
 
 const Comments = (props) => {
   const { comments } = props;
-  console.log(comments);
   return (
     <div className="p-3 text-md text-gray-700 shadow-md">
       <ul

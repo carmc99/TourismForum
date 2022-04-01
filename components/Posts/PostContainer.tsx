@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Post } from "../../prisma/generated/type-graphql";
 
-const getScore = (count) => {
+const getScore = (count:number) => {
   let content = [];
   for (let index = 0; index < count; index++) {
     content.push(

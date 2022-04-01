@@ -1,13 +1,11 @@
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import Prisma from "../../../config/prisma"
 
 export default NextAuth({
   // Configure one or more authentication providers
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(Prisma),
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       if (user.estado === "NoAutorizado") return false;

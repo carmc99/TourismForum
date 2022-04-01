@@ -3,6 +3,8 @@ import Head from "next/head";
 import { useQuery, gql } from "@apollo/client";
 import PostContainer from "../components/Posts/PostContainer";
 import { Post } from "../prisma/generated/type-graphql";
+import Input from "@material-tailwind/react/Input";
+import Button from "@material-tailwind/react/Button";
 
 const GET_POST_QUERY = gql`
   {
@@ -41,7 +43,20 @@ const Home: NextPage = () => {
   return (
     <div>
       <div className="flex flex-row mx-4 mb-6">
-        <div className="basis 1/2 bg-blue-300 mx-4 text-left">GG</div>
+        <div className="basis 1/2">
+          <Input
+            type="text"
+            color="lightBlue"
+            size="lg"
+            outline={true}
+            placeholder="Buscar"
+          />
+        </div>
+        <div className="basis 1/2">
+          <Button color="blue" size="lg" ripple="dark" type="submit">
+            Filtrar
+          </Button>
+        </div>
       </div>
       <div className="flex flex-wrap mx-4">
         <Head>

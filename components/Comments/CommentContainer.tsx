@@ -1,7 +1,7 @@
 import React from "react";
 import { Comment } from "../../prisma/generated/type-graphql";
 
-const getScore = (count) => {
+const getScore = (count:number) => {
   let content = [];
   for (let index = 0; index < count; index++) {
     content.push(
@@ -37,8 +37,8 @@ const CommentContainer = (comment: Comment) => {
         <div className="flex-shrink-0">
           <img
             className="w-16 h-16 rounded-full"
-            src={comment.user?.image}
-            alt={comment.user?.image}
+            src={comment.user?.image ? (comment.user?.image) : ("/")}
+            alt={comment.user?.image ? (comment.user?.image) : ("Not found")}
           />
         </div>
         <div className="flex-1 min-w-0">
