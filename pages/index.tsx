@@ -3,8 +3,7 @@ import Head from "next/head";
 import { useQuery, gql } from "@apollo/client";
 import PostContainer from "../components/Posts/PostContainer";
 import { Post } from "../prisma/generated/type-graphql";
-import Input from "@material-tailwind/react/Input";
-import Button from "@material-tailwind/react/Button";
+import Link from "next/link";
 
 const GET_POST_QUERY = gql`
   {
@@ -37,25 +36,41 @@ const Home: NextPage = () => {
   const { loading, error, data } = useQuery(GET_POST_QUERY, {
     fetchPolicy: "cache-and-network",
   });
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>${error.message}</div>;
+  if (loading)
+    return (
+      <main>
+        <div>Loading...</div>
+      </main>
+    );
+  if (error)
+    return (
+      <main>
+        <div>${error.message}</div>
+      </main>
+    );
   const { posts } = data;
   return (
     <div>
-      <div className="flex flex-row mx-4 mb-6">
-        <div className="basis 1/2">
-          <Input
+      <div className="flex mb-4">
+        <div className="flex-1">
+          <input
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
+            id="inline-full-name"
             type="text"
-            color="lightBlue"
-            size="lg"
-            outline={true}
-            placeholder="Buscar"
+            placeholder="Filtrar"
           />
         </div>
-        <div className="basis 1/2">
-          <Button color="blue" size="lg" ripple="dark" type="submit">
+        <div className="flex-1 ml-2">
+          <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
             Filtrar
-          </Button>
+          </button>
+        </div>
+        <div className="flex-1 flex justify-end">
+          <Link href={"/posts/register"}>
+            <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+              Nuevo item
+            </button>
+          </Link>
         </div>
       </div>
       <div className="flex flex-wrap mx-4">

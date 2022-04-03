@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import "@material-tailwind/react/tailwind.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import MainLayout from "../layouts/MainLayout";
 import { SessionProvider } from "next-auth/react";

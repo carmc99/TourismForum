@@ -1,12 +1,12 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import useFormData from "../../hooks/useFormData";
-import Button from "@material-tailwind/react/Button";
-
 
 const CommentForm = () => {
   const star = (param) => {
-    return clicked[param] ? "fa-solid fa-star cursor-pointer" : "fa-regular fa-star cursor-pointer";
+    return clicked[param]
+      ? "fa-solid fa-star cursor-pointer"
+      : "fa-regular fa-star cursor-pointer";
   };
 
   const { form, formData, updateFormData } = useFormData(null);
@@ -31,47 +31,41 @@ const CommentForm = () => {
   const session = useSession();
   const user = session.data?.user;
   return (
-    <div>
-      <ul>
-        <li className="py-2 sm:py-2">
-          <form
-            ref={form}
-            onChange={updateFormData}
-            onSubmit={submitForm}
-            className="flex items-center space-x-4"
-          >
-            <div className="flex-shrink-0">
-              <img className="w-16 h-16 rounded-full" src={user?.image} />
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex justify-center">
-                <textarea
-                  rows="3"
-                  placeholder="Comentario"
-                  className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
-                />
-              </div>
-            </div>
-            <div className="flex-0 min-w-0">
-              <div className="flex justify-center">
-                <p>Calificar: </p>
-                <i onClick={(e) => handleStarClick(e, 0)} className={star(0)} />
-                <i onClick={(e) => handleStarClick(e, 1)} className={star(1)} />
-                <i onClick={(e) => handleStarClick(e, 2)} className={star(2)} />
-                <i onClick={(e) => handleStarClick(e, 3)} className={star(3)} />
-                <i onClick={(e) => handleStarClick(e, 4)} className={star(4)} />
-              </div>
-            </div>
-            <div className="inline-flex items-center">
-              <Button color="blue" size="lg" ripple="dark" type="submit">
-                Comentar
-              </Button>
-            </div>
-          </form>
-        </li>
-      </ul>
-    </div>
+    <form
+      ref={form}
+      onChange={updateFormData}
+      onSubmit={submitForm}
+      className="flex mb-4"
+    >
+      <div className="flex-1/2  mt-3">
+        <div className="flex-shrink-0">
+          <img className="w-16 h-16 rounded-full" src={user?.image} />
+        </div>
+      </div>
+      <div className="flex-1  m-3">
+        <textarea
+          rows={1}
+          placeholder="Comentario"
+          className="resize-none block px-8 w-full border rounded py-2 text-gray-700 focus:outline-none items-center max-h-150"
+        />
+      </div>
+      <div className="flex-1/2  flex justify-center items-center">
+        <p className="pr-2">Calificar: </p>
+        <i onClick={(e) => handleStarClick(e, 0)} className={star(0)} />
+        <i onClick={(e) => handleStarClick(e, 1)} className={star(1)} />
+        <i onClick={(e) => handleStarClick(e, 2)} className={star(2)} />
+        <i onClick={(e) => handleStarClick(e, 3)} className={star(3)} />
+        <i onClick={(e) => handleStarClick(e, 4)} className={star(4)} />
+      </div>
+      <div className="flex-1/2 flex justify-center items-center p-3">
+        <button
+          className="block bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+        >
+          Comentar
+        </button>
+      </div>
+    </form>
   );
 };
 
