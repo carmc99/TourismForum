@@ -35,7 +35,7 @@ const Profile: NextPage = () => {
       </Head>
       <PostContainerExtended {...post} />
 
-      <Comments key={post.id} comments={post.comments} />
+      <Comments key={post.id} {...post} />
     </div>
   );
 };

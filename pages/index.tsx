@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useQuery } from "@apollo/client";
 import PostContainer from "../components/Posts/PostContainer";
@@ -8,6 +9,7 @@ import { GET_POSTS_QUERY } from "../graphql/queries/posts";
 import ReactLoading from "react-loading";
 
 const Home: NextPage = () => {
+  const [filter, setFilter] = useState({});
   const { loading, error, data } = useQuery(GET_POSTS_QUERY, {
     fetchPolicy: "cache-and-network",
   });
@@ -23,20 +25,51 @@ const Home: NextPage = () => {
         <div>${error.message}</div>
       </main>
     );
-  const { posts } = data;
+  let { posts } = data;
+
+  const handleFilter = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFilter((values) => ({ ...values, [name]: value }));
+  };
+  const r = null;
+  const search = () => {
+    const filtered = posts.filter((x: Post) => {
+      const byBiome = x.biome.toLowerCase() === filter.postFilter.toLowerCase();
+      const byCity =
+        x.location.name.toLowerCase() === filter.postFilter.toLowerCase();
+      const byCountry =
+        x.location.country.name.toLowerCase() ===
+        filter.postFilter.toLowerCase();
+      if (byBiome) {
+        return byBiome;
+      }
+      if (byCity) {
+        return byCity;
+      }
+      return byCountry;
+    });
+    posts = filtered;
+  };
+
+
   return (
     <div>
       <div className="flex mb-4">
         <div className="flex-1">
           <input
             className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
-            id="inline-full-name"
+            name="postFilter"
             type="text"
+            onChange={handleFilter}
             placeholder="Filtrar"
           />
         </div>
         <div className="flex-1 ml-2">
-          <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+          <button
+            className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+            onClick={search}
+          >
             Filtrar
           </button>
         </div>

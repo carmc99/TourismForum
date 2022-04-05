@@ -28,6 +28,7 @@ const GET_POSTS_QUERY = gql`
 const GET_POST_QUERY = gql`
   query Post($where: PostWhereUniqueInput!) {
     post(where: $where) {
+      id
       title
       biome
       description

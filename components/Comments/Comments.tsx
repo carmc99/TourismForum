@@ -4,7 +4,9 @@ import CommentContainer from "./CommentContainer";
 import CommentForm from "./CommentForm";
 
 const Comments = (props) => {
-  const { comments } = props;
+  const postId = props.id;
+  const comments = props.comments;
+  //console.table(props.comments)
   return (
     <div className="w-full p-3 text-md text-gray-700 shadow-md">
       <ul
@@ -16,7 +18,7 @@ const Comments = (props) => {
             return <CommentContainer key={comment.id} {...comment} />;
           })}
       </ul>
-      <CommentForm></CommentForm>
+      <CommentForm key={postId} posId={postId} />
     </div>
   );
 };

@@ -1,21 +1,62 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import useFormData from "../../hooks/useFormData";
+import { useMutation } from "@apollo/client";
+import ReactLoading from "react-loading";
+import { STORE_COMMENT } from "../../graphql/mutations/comments";
+import { toast } from "react-toastify";
 
-const CommentForm = () => {
+const CommentForm = (props) => {
+  const [addComment, { loading, error }] = useMutation(STORE_COMMENT);
+  const session = useSession();
+  const user = session.data?.user;
+  if (loading) {
+    <main className="flex items-center justify-center">
+      <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+    </main>;
+  }
+  if (error) {
+    toast.error(err.message);
+  }
+
   const star = (param) => {
     return clicked[param]
       ? "fa-solid fa-star cursor-pointer"
       : "fa-regular fa-star cursor-pointer";
   };
-
   const { form, formData, updateFormData } = useFormData(null);
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
+    await addComment({
+      variables: {
+        data: {
+          description: formData.comment,
+          score: getScore(clicked),
+          user: {
+            connect: {
+              id: user.id,
+            },
+          },
+          post: {
+            connect: {
+              id: props.posId,
+            },
+          },
+        },
+      },
+    });
+    toast.success("Registro almacenado con exito");
   };
 
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const getScore = (scores) => {
+    let i = 0;
+    while (scores[i]) {
+      i++;
+    }
+    return i;
+  };
 
   const handleStarClick = (e, index) => {
     e.preventDefault();
@@ -28,8 +69,6 @@ const CommentForm = () => {
     setClicked(clickStates);
   };
 
-  const session = useSession();
-  const user = session.data?.user;
   return (
     <form
       ref={form}
@@ -44,7 +83,9 @@ const CommentForm = () => {
       </div>
       <div className="flex-1  m-3">
         <textarea
-          rows={1}
+          rows={3}
+          required={true}
+          name="comment"
           placeholder="Comentario"
           className="resize-none block px-8 w-full border rounded py-2 text-gray-700 focus:outline-none items-center max-h-150"
         />
@@ -62,7 +103,7 @@ const CommentForm = () => {
           className="block bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
           type="submit"
         >
-          Comentar
+          {loading ? <span>Cargando...</span> : <span>Comentar</span>}
         </button>
       </div>
     </form>
