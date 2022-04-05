@@ -6,7 +6,7 @@ import CommentForm from "./CommentForm";
 const Comments = (props) => {
   const { comments } = props;
   return (
-    <div className="p-3 text-md text-gray-700 shadow-md">
+    <div className="w-full p-3 text-md text-gray-700 shadow-md">
       <ul
         role="list"
         className="divide-y divide-gray-400 dark:divide-gray-300 overflow-y-auto h-64"

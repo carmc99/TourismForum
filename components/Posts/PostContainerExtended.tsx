@@ -34,7 +34,7 @@ const getScore = (count:number) => {
 const PostContainerExtended = (post: Post) => {
   console.log(post);
   return (
-      <div className="shadow-md">
+      <div className="w-full shadow-md">
         <a className="c-card block bg-white rounded-lg overflow-hidden">
           <div className="relative pb-48 overflow-hidden">
             <img
