@@ -1,48 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import PostContainerExtended from "../../components/Posts/PostContainerExtended";
 import Comments from "../../components/Comments/Comments";
-
-const GET_POST_QUERY = gql`
-  query Post($where: PostWhereUniqueInput!) {
-    post(where: $where) {
-      title
-      biome
-      description
-      image
-      average_score
-      created_at
-      updated_at
-      author {
-        name
-      }
-      location {
-        name
-        country {
-          name
-        }
-      }
-      hotel {
-        name
-        price_per_night
-        lunch_included
-        image
-      }
-      comments {
-        user {
-          name
-          image
-        }
-        score
-        description
-        created_at
-        updated_at
-      }
-    }
-  }
-`;
+import { GET_POST_QUERY } from "../../graphql/queries/posts";
+import ReactLoading from "react-loading";
 
 const Profile: NextPage = () => {
   const router = useRouter();
@@ -55,10 +18,14 @@ const Profile: NextPage = () => {
     },
     fetchPolicy: "cache-and-network",
   });
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+      </div>
+    );
   if (error) return <div>${error.message}</div>;
   const post = data.post;
-  console.table(post.comments);
   return (
     <div className="flex flex-wrap">
       <Head>

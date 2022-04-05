@@ -1,82 +1,40 @@
 import React from "react";
 import { useState } from "react";
 import validator from "validator";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useSession } from "next-auth/react";
-
-const GET_COUNTRIES = gql`
-  query Countries {
-    countries {
-      name
-      id
-    }
-  }
-`;
-const STORE_POST = gql`
-  mutation CreatePost($data: PostCreateInput!) {
-    createPost(data: $data) {
-      biome
-      title
-      description
-      image
-      average_score
-      author {
-        id
-      }
-      location {
-        id
-      }
-      hotel {
-        id
-      }
-    }
-  }
-`;
+import ReactLoading from "react-loading";
+import { GET_COUNTRIES } from "../../graphql/queries/countries";
+import { STORE_POST } from "../../graphql/mutations/posts";
+import { BIOMES } from "../../graphql/queries/biomes";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [inputs, setInputs] = useState({});
-  const biomes = [
-    "TUNDRA",
-    "BOSQUE",
-    "PRADERA",
-    "CHAPARRAL",
-    "DESIERTO",
-    "TAIGA",
-    "ESTEPA",
-    "SELVA_TROPICAL",
-    "SABANA",
-    "MANGLAR",
-  ];
   const user = useSession().data;
-  console.table(user);
+
   const [addPost, { load, err }] = useMutation(STORE_POST);
-  if (load)
-    return (
-      <main>
-        <div>Guardando...</div>
-      </main>
-    );
-  if (err)
-    return (
-      <main>
-        <div>${err.message}</div>
-      </main>
-    );
+  if (load) {
+    <main className="flex items-center justify-center">
+      <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+    </main>;
+  }
+  if (err) {
+    toast.error(err.message);
+  }
+
   const { loading, error, data } = useQuery(GET_COUNTRIES, {
     fetchPolicy: "cache-and-network",
   });
   if (loading)
     return (
-      <main>
-        <div>Loading...</div>
+      <main className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
       </main>
     );
-  if (error)
-    return (
-      <main>
-        <div>${error.message}</div>
-      </main>
-    );
+  if (error) {
+    toast.error(error.message);
+  }
   const { countries } = data;
 
   const validate = (value) => {
@@ -92,9 +50,9 @@ const RegisterForm = () => {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    addPost({
+    await addPost({
       variables: {
         data: {
           biome: inputs.biome,
@@ -115,6 +73,7 @@ const RegisterForm = () => {
         },
       },
     });
+    toast.success("Registro almacenado con exito");
   };
 
   return (
@@ -145,7 +104,7 @@ const RegisterForm = () => {
               onChange={handleChange}
             >
               <option value="">Seleccione una opcion</option>
-              {biomes.map((biome) => (
+              {BIOMES.map((biome) => (
                 <option value={biome}>{biome}</option>
               ))}
             </select>
@@ -303,7 +262,18 @@ const RegisterForm = () => {
             className="block bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
-            Guardar
+            {load ? (
+              <ReactLoading
+                type="cylon"
+                color="black"
+                height={"7%"}
+                width={"7%"}
+              >
+                <span>Guardando...</span>
+              </ReactLoading>
+            ) : (
+              <span>Guardar</span>
+            )}
           </button>
         </div>
       </div>

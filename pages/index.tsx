@@ -1,45 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import PostContainer from "../components/Posts/PostContainer";
 import { Post } from "../prisma/generated/type-graphql";
 import Link from "next/link";
-
-const GET_POST_QUERY = gql`
-  {
-    posts {
-      id
-      biome
-      description
-      title
-      image
-      average_score
-      author {
-        name
-      }
-      location {
-        name
-        country {
-          name
-        }
-      }
-      hotel {
-        price_per_night
-        name
-        lunch_included
-      }
-    }
-  }
-`;
+import { GET_POSTS_QUERY } from "../graphql/queries/posts";
+import ReactLoading from "react-loading";
 
 const Home: NextPage = () => {
-  const { loading, error, data } = useQuery(GET_POST_QUERY, {
+  const { loading, error, data } = useQuery(GET_POSTS_QUERY, {
     fetchPolicy: "cache-and-network",
   });
   if (loading)
     return (
-      <main>
-        <div>Loading...</div>
+      <main className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
       </main>
     );
   if (error)
@@ -73,12 +48,13 @@ const Home: NextPage = () => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-wrap mx-4">
-        <Head>
-          <title>Home</title>
-          <meta name="description" content="Home" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+      <Head>
+        <title>Home</title>
+        <meta name="description" content="Home" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {/* SM -> SCREEN >= 640 */}
+      <div className="flex flex-wrap">
         {posts &&
           posts.map((p: Post) => {
             return <PostContainer {...p} />;

@@ -32,10 +32,9 @@ const getScore = (count:number) => {
 };
 
 const PostContainer = (post: Post) => {
-  console.log(post);
   return (
     <Link href={"/posts/" + post.id}>
-      <div className="sm:w-1/2 md:w-1/2 xl:w-1/4 cursor-pointer">
+      <div className="sm:w-1/2 md:w-1/2 xl:w-1/4 cursor-pointer p-1 sm:p-2">
         <a className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
           <div className="relative pb-48 overflow-hidden">
             <img
