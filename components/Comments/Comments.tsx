@@ -6,7 +6,6 @@ import CommentForm from "./CommentForm";
 const Comments = (props) => {
   const postId = props.id;
   const comments = props.comments;
-  //console.table(props.comments)
   return (
     <div className="w-full p-3 text-md text-gray-700 shadow-md">
       <ul

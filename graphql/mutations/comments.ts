@@ -15,4 +15,12 @@ const STORE_COMMENT = gql`
   }
 `;
 
-export { STORE_COMMENT };
+const DELETE_COMMENT = gql`
+  mutation DeleteComment($where: CommentWhereUniqueInput!) {
+    deleteComment(where: $where) {
+      id
+    }
+  }
+`;
+
+export { STORE_COMMENT, DELETE_COMMENT };

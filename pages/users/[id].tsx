@@ -1,34 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { User } from "../../prisma/generated/type-graphql";
-import { useQuery, gql } from "@apollo/client";
-
-const GET_USER_QUERY = gql`
-  query User($where: UserWhereUniqueInput!) {
-    user(where: $where) {
-      name
-      email
-      emailVerified
-      image
-      created_at
-      updated_at
-      role {
-        name
-      }
-      profile {
-        phone
-        address
-        image
-        gender
-        country {
-          name
-        }
-      }
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { GET_USER_QUERY } from "../../graphql/queries/users";
+import ReactLoading from "react-loading";
 
 const Profile: NextPage = () => {
   const router = useRouter();
@@ -41,10 +16,14 @@ const Profile: NextPage = () => {
     },
     fetchPolicy: "cache-and-network",
   });
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+      </div>
+    );
   if (error) return <div>${error.message}</div>;
   const user = data.user;
-  console.table(user);
   return (
     <div className="flex flex-wrap">
       <Head>

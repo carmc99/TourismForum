@@ -8,7 +8,6 @@ import NavBar from "../components/Layout/NavBar";
 import Footer from "../components/Layout/Footer";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../lib/apollo";
-import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (

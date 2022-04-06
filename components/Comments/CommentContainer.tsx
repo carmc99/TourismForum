@@ -1,7 +1,11 @@
 import React from "react";
 import { Comment } from "../../prisma/generated/type-graphql";
+import { useSession } from "next-auth/react";
+import { DELETE_COMMENT } from "../../graphql/mutations/comments";
+import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
 
-const getScore = (count:number) => {
+const getScore = (count: number) => {
   let content = [];
   for (let index = 0; index < count; index++) {
     content.push(
@@ -31,14 +35,43 @@ const getScore = (count:number) => {
 };
 
 const CommentContainer = (comment: Comment) => {
+  const user = useSession().data;
+  const [deleteComment, { loading, error }] = useMutation(DELETE_COMMENT);
+  if (error) {
+    toast.error(error.message);
+  }
+
+  const canDelete = () => {
+    if (comment.user?.name === user?.user?.name) {
+      return true;
+    }
+    return false;
+  };
+  const submitForm = async (e) => {
+    e.preventDefault();
+    await deleteComment({
+      variables: {
+        where: {
+          id: comment.id,
+        },
+      },
+    });
+
+    toast.success("Comentario eliminado");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
+  console.table(canDelete());
   return (
     <li className="py-2 sm:py-2">
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
           <img
             className="w-16 h-16 rounded-full"
-            src={comment.user?.image ? (comment.user?.image) : ("/")}
-            alt={comment.user?.image ? (comment.user?.image) : ("Not found")}
+            src={comment.user?.image ? comment.user?.image : "/"}
+            alt={comment.user?.image ? comment.user?.image : "Not found"}
           />
         </div>
         <div className="flex-1 min-w-0">
@@ -50,6 +83,33 @@ const CommentContainer = (comment: Comment) => {
         </div>
         <div className="inline-flex items-center font-semibold flex-none w-32">
           {getScore(comment.score)}
+        </div>
+        <div>
+          {canDelete() ? (
+            <form onSubmit={submitForm}>
+              <button
+                className="bg-red-600 hover:bg-red-500 text-white py-2 px-3 mr-4 rounded-full inline-flex items-center"
+                type="submit"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </button>
+            </form>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </li>

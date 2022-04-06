@@ -52,6 +52,7 @@ const GET_POST_QUERY = gql`
         image
       }
       comments {
+        id
         user {
           name
           image

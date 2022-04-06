@@ -16,7 +16,7 @@ const CommentForm = (props) => {
     </main>;
   }
   if (error) {
-    toast.error(err.message);
+    toast.error(error.message);
   }
 
   const star = (param) => {
@@ -47,6 +47,9 @@ const CommentForm = (props) => {
       },
     });
     toast.success("Registro almacenado con exito");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
 
   const [clicked, setClicked] = useState([false, false, false, false, false]);
