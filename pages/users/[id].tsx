@@ -24,6 +24,7 @@ const Profile: NextPage = () => {
     );
   if (error) return <div>${error.message}</div>;
   const user = data.user;
+
   return (
     <div className="flex flex-wrap">
       <Head>

@@ -1,29 +1,57 @@
-import React from "react";
-import { useState } from "react";
+import { useRouter } from "next/router";
 import validator from "validator";
-import { useSession } from "next-auth/react";
+import { Country, Post } from "../../../prisma/generated/type-graphql";
+import { BIOMES } from "../../../graphql/queries/biomes";
 import ReactLoading from "react-loading";
-import { BIOMES } from "../../graphql/queries/biomes";
+import { getCountries } from "../../../services/countryService";
+import { useMutation, gql } from "@apollo/client";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { getCountries } from "../../services/countryService";
-import { Country } from "../../prisma/generated/type-graphql";
-import { STORE_POST } from "../../graphql/mutations/posts";
-import { useQuery, useMutation } from "@apollo/client";
 
-const RegisterForm = () => {
-  const [inputs, setInputs] = useState({});
-  const user = useSession().data;
-  const [addPost] = useMutation(STORE_POST);
-  const { load, err, countriesData } = getCountries();
-  if (load)
-    return (
-      <main className="flex items-center justify-center">
-        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
-      </main>
-    );
-  if (err) {
-    toast.error(err.message);
+const UPDATED_POST = gql`
+  mutation UpdatePost($data: PostUpdateInput!, $where: PostWhereUniqueInput!) {
+    updatePost(data: $data, where: $where) {
+      id
+      biome
+    }
   }
+`;
+
+const EditForm = () => {
+  const router = useRouter();
+  const [updatedPost] = useMutation(UPDATED_POST);
+  let currentPost = "";
+  currentPost = localStorage.getItem("current-post");
+  const post: Post = JSON.parse(currentPost);
+  const id = router.query.id;
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    defaultValues: {
+      title: post.title,
+      biome: post.biome,
+      description: post.description,
+      country: post.location?.country?.id,
+      city: post.location?.name,
+      imageUrl: post.image,
+      hotelName: post.hotel?.name,
+      price: post.hotel?.price_per_night,
+      lunch: post.hotel?.lunch_included,
+    },
+  });
+
+  const { load, err, countriesData } = getCountries();
+  if (load) {
+    return (
+      <div className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+      </div>
+    );
+  }
+  if (err) return <div>${err ? err.message : ""}</div>;
+
   const { countries } = countriesData;
 
   const validate = (value: any) => {
@@ -33,26 +61,27 @@ const RegisterForm = () => {
     return validator.isURL(value);
   };
 
-  const handleChange = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const response = await addPost({
+  const onSubmit = async (data, e) => {
+    const response = await updatedPost({
       variables: {
+        where: {
+          id: id,
+        },
         data: {
-          biome: inputs.biome,
-          title: inputs.title,
-          description: inputs.description,
-          image: inputs.imageUrl,
-          average_score: 0,
-          author: {
-            connect: {
-              id: user.user.id,
-            },
+          biome: {
+            set: data.biome,
+          },
+          title: {
+            set: data.title,
+          },
+          description: {
+            set: data.description,
+          },
+          image: {
+            set: data.imageUrl,
+          },
+          average_score: {
+            set: 0,
           },
           location: {
             connect: {
@@ -62,14 +91,15 @@ const RegisterForm = () => {
         },
       },
     });
+    e.target.reset();
     if (response.errors) {
-      toast.error("Ha ocurrido un problema al intentar almacenar el post");
+      toast.error("Ha ocurrido un problema al intentar actualizar el post");
     }
-    toast.success("Post creado con exito");
+    toast.success("Post actualizado con exito");
   };
 
   return (
-    <form className="w-full " onSubmit={handleSubmit}>
+    <form className="w-full " onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -77,11 +107,9 @@ const RegisterForm = () => {
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            name="title"
             type="text"
             placeholder="Mi titulo"
-            required={true}
-            onChange={handleChange}
+            {...register("title", { required: true })}
           />
         </div>
         <div className="w-full md:w-1/2 px-3">
@@ -91,9 +119,7 @@ const RegisterForm = () => {
           <div className="relative">
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              name="biome"
-              required={true}
-              onChange={handleChange}
+              {...register("biome", { required: true })}
             >
               <option value="">Seleccione una opcion</option>
               {BIOMES.map((biome) => (
@@ -120,9 +146,7 @@ const RegisterForm = () => {
           <textarea
             placeholder="Descripcion"
             className="resize-none bg-gray-200 text-gray-700 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500 w-full"
-            name="description"
-            required={true}
-            onChange={handleChange}
+            {...register("description", { required: true })}
           ></textarea>
         </div>
       </div>
@@ -134,11 +158,11 @@ const RegisterForm = () => {
           <div className="relative">
             <select
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              name="country"
-              required={true}
-              onChange={handleChange}
+              {...register("country", { required: true })}
             >
-              <option value="">Seleccione una opcion</option>
+              <option selected value={post.location.country.id}>
+                {post.location.country.name}
+              </option>
               {countries.map((country: Country) => (
                 <option value={country.id}>{country.name}</option>
               ))}
@@ -160,11 +184,9 @@ const RegisterForm = () => {
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="city"
+            {...register("city", { required: true })}
             type="text"
-            required={true}
-            onChange={handleChange}
-            placeholder="Medellin"
+            placeholder="Ciudad"
           />
         </div>
 
@@ -174,25 +196,18 @@ const RegisterForm = () => {
           </label>
           <input
             className="
-            block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             type="text"
-            name="imageUrl"
-            required={true}
-            value={inputs.imageUrl || ""}
-            onChange={handleChange}
+            {...register("imageUrl", { required: true })}
           />
           <p className="text-red-500 text-xs italic">
-            Por favor ingrese la direccion url donde se encuentra aloajda la
+            Por favor ingrese la direccion url donde se encuentra alojada la
             imagen.
           </p>
         </div>
         <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0 pt-5">
-          <img
-            className="p-0 h-auto rounded-full bg-white h-12"
-            src={inputs.imageUrl || ""}
-            alt=""
-          />
-          {validate(inputs.imageUrl) ? (
+          <img className="p-0 h-auto rounded-full bg-white h-12" alt="" />
+          {validate("") ? (
             <p className="text-red-500 text-xs italic">Previsualizacion</p>
           ) : (
             <p className="text-red-500 text-xs italic">
@@ -216,10 +231,8 @@ const RegisterForm = () => {
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="text"
-            name="hotelName"
-            value={inputs.hotelName || ""}
+            {...register("hotelName", { required: false })}
             placeholder="Nombre hotel"
-            onChange={handleChange}
           />
         </div>
         <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0">
@@ -229,10 +242,8 @@ const RegisterForm = () => {
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             type="number"
-            name="price"
-            value={inputs.price || 0}
+            {...register("price", { required: false })}
             placeholder="Precio por noche"
-            onChange={handleChange}
           />
         </div>
         <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0 flex items-center">
@@ -242,9 +253,7 @@ const RegisterForm = () => {
           <input
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
             type="checkbox"
-            name="lunch"
-            value={inputs.lunch || false}
-            onChange={handleChange}
+            {...register("lunch", { required: false })}
           />
         </div>
       </div>
@@ -273,4 +282,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default EditForm;

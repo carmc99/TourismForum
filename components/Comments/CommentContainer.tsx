@@ -62,8 +62,6 @@ const CommentContainer = (comment: Comment) => {
       window.location.reload();
     }, 2000);
   };
-
-  console.table(canDelete());
   return (
     <li className="py-2 sm:py-2">
       <div className="flex items-center space-x-4">

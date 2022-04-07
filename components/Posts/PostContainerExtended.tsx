@@ -1,7 +1,9 @@
 import React from "react";
 import { Post } from "../../prisma/generated/type-graphql";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
-const getScore = (count:number) => {
+const getScore = (count: number) => {
   let content = [];
   for (let index = 0; index < count; index++) {
     content.push(
@@ -30,75 +32,140 @@ const getScore = (count:number) => {
   return content;
 };
 
-
 const PostContainerExtended = (post: Post) => {
-  console.log(post);
+  const user = useSession().data;
+
+  const canModify = () => {
+    if (post.author?.name === user?.user?.name) {
+      return true;
+    }
+    return false;
+  };
+
+  const submitFormDelete = async (e) => {
+    e.preventDefault();
+  };
+
+  const submitFormEdit = async (e) => {
+    e.preventDefault();
+  };
   return (
-      <div className="w-full shadow-md">
-        <a className="c-card block bg-white rounded-lg overflow-hidden">
-          <div className="relative pb-48 overflow-hidden">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              src={post.image}
-              alt=""
-            />
-          </div>
-          <div className="p-4">
-            <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-              {post.biome}
+    <div className="w-full shadow-md">
+      <a className="c-card block bg-white rounded-lg overflow-hidden">
+        <div className="relative pb-48 overflow-hidden">
+          <img
+            className="absolute inset-0 h-full w-full object-cover"
+            src={post.image}
+            alt=""
+          />
+        </div>
+        <div className="p-4">
+          <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+            {post.biome}
+          </span>
+          <h2 className="mt-2 mb-2  font-bold">{post.title}</h2>
+          <p className="text-sm">{post.description}</p>
+        </div>
+        {post.hotel ? (
+          <div className="p-3 border-t text-xs text-gray-700">
+            <span className="flex items-center font-bold mb-1">
+              <i className="fas fa-concierge-bell fa-fw mr-2 text-gray-900"></i>{" "}
+              Hotel
             </span>
-            <h2 className="mt-2 mb-2  font-bold">{post.title}</h2>
-            <p className="text-sm">{post.description}</p>
+            <span className="flex items-center pb-2 font-semi-bold text-sm">
+              {post.hotel.name}
+            </span>
+
+            <div className="p-1 border-t text-xs text-gray-700"></div>
+            <span className="flex items-center font-bold mb-1">
+              <i className="fas fa-hand-holding-usd fa-fw mr-2 text-gray-900"></i>{" "}
+              Precio por noche:
+            </span>
+
+            <span className="flex items-center font-semi-bold pb-2">
+              {" "}
+              <h2>${post.hotel.price_per_night} USD</h2>
+            </span>
+            <div className="p-1 border-t text-xs text-gray-700"></div>
+            <span className="flex items-center font-bold mb-1">
+              <i className="fas fa-utensils fa-fw mr-2 text-gray-900"></i>{" "}
+              Alimentacion incluida:
+            </span>
+
+            <span className="flex items-center font-semi-bold text-sm">
+              {post.hotel.lunch_included ? <div>Si</div> : <div>No</div>}
+            </span>
           </div>
-          {post.hotel ? (
-            <div className="p-3 border-t text-xs text-gray-700">
-              <span className="flex items-center font-bold mb-1">
-                <i className="fas fa-concierge-bell fa-fw mr-2 text-gray-900"></i>{" "}
-                Hotel
-              </span>
-              <span className="flex items-center pb-2 font-semi-bold text-sm">
-                {post.hotel.name}
-              </span>
+        ) : (
+          <div></div>
+        )}
 
-              <div className="p-1 border-t text-xs text-gray-700"></div>
-              <span className="flex items-center font-bold mb-1">
-                <i className="fas fa-hand-holding-usd fa-fw mr-2 text-gray-900"></i>{" "}
-                Precio por noche:
-              </span>
+        <div className="p-3 border-t border-b text-xs text-gray-700">
+          <span className="flex items-center font-bold mb-1">
+            <i className="fas fa-globe-americas fa-fw mr-2 text-gray-900"></i>{" "}
+            Localizacion
+          </span>
+          <span className="flex items-center">
+            {post.location?.name}, {post.location?.country?.name}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <div className="p-4 flex items-center text-sm text-gray-600">
+            {getScore(post.average_score)}
+            <span className="ml-2">Estrellas {post.average_score}/5</span>
+          </div>
 
-              <span className="flex items-center font-semi-bold pb-2">
-                {" "}
-                <h2>${post.hotel.price_per_night} USD</h2>
-              </span>
-              <div className="p-1 border-t text-xs text-gray-700"></div>
-              <span className="flex items-center font-bold mb-1">
-                <i className="fas fa-utensils fa-fw mr-2 text-gray-900"></i>{" "}
-                Alimentacion incluida:
-              </span>
+          {canModify() ? (
+            <div className="flex flex-row p-4 text-sm text-gray-600">
+              <Link href={"/posts/edit/" + post.id}>
+                <button className="hover:text-yellow-400 text-yellow-500 font-bold py-2 px-2 mr-1 inline-flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                  </svg>
+                  <span className="pl-1">Editar</span>
+                </button>
+              </Link>
 
-              <span className="flex items-center font-semi-bold text-sm">
-                {post.hotel.lunch_included ? <div>Si</div> : <div>No</div>}
-              </span>
+              <form onSubmit={submitFormDelete}>
+                <button
+                  className="hover:text-red-400 text-red-600 font-bold py-2 px-2 mr-1 inline-flex items-center"
+                  type="submit"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                  <span className="pl-1">Eliminar</span>
+                </button>
+              </form>
             </div>
           ) : (
             <div></div>
           )}
-
-          <div className="p-3 border-t border-b text-xs text-gray-700">
-            <span className="flex items-center font-bold mb-1">
-              <i className="fas fa-globe-americas fa-fw mr-2 text-gray-900"></i>{" "}
-              Localizacion
-            </span>
-            <span className="flex items-center">
-              {post.location?.name}, {post.location?.country?.name}
-            </span>
-          </div>
-          <div className="p-4 flex items-center text-sm text-gray-600">
-          {getScore(post.average_score)}
-            <span className="ml-2">Estrellas {post.average_score}/5</span>
-          </div>
-        </a>
-      </div>
+        </div>
+      </a>
+    </div>
   );
 };
 

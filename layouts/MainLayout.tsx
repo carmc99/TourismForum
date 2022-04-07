@@ -16,7 +16,7 @@ const MainLayout = ({ children }) => {
       return <div>Usted no ha sido autorizado para ingresar aun</div>;
     }
     return (
-      <main>
+      <main >
         {children}
         <ToastContainer />
       </main>

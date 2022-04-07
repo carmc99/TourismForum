@@ -42,6 +42,7 @@ const GET_POST_QUERY = gql`
       location {
         name
         country {
+          id
           name
         }
       }

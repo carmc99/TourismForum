@@ -52,7 +52,6 @@ const Home: NextPage = () => {
     posts = filtered;
   };
 
-
   return (
     <div>
       <div className="flex mb-4">
@@ -88,10 +87,13 @@ const Home: NextPage = () => {
       </Head>
       {/* SM -> SCREEN >= 640 */}
       <div className="flex flex-wrap">
-        {posts &&
+        {posts && posts.length > 0 ? (
           posts.map((p: Post) => {
             return <PostContainer {...p} />;
-          })}
+          })
+        ) : (
+          <div>Sin informacion para mostrar</div>
+        )}
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ const Profile: NextPage = () => {
     );
   if (error) return <div>${error.message}</div>;
   const post = data.post;
+  localStorage.setItem("current-post", JSON.stringify(post));
   return (
     <div className="flex flex-wrap">
       <Head>
