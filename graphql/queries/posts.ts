@@ -67,4 +67,12 @@ const GET_POST_QUERY = gql`
   }
 `;
 
-export { GET_POSTS_QUERY, GET_POST_QUERY };
+const DELETE_POST = gql`
+  mutation DeletePost($where: PostWhereUniqueInput!) {
+    deletePost(where: $where) {
+      id
+    }
+  }
+`;
+
+export { GET_POSTS_QUERY, GET_POST_QUERY, DELETE_POST };

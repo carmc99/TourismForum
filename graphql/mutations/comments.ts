@@ -23,4 +23,12 @@ const DELETE_COMMENT = gql`
   }
 `;
 
-export { STORE_COMMENT, DELETE_COMMENT };
+const DELETE_COMMENTS = gql`
+  mutation DeleteManyComment($where: CommentWhereInput) {
+    deleteManyComment(where: $where) {
+      count
+    }
+  }
+`;
+
+export { STORE_COMMENT, DELETE_COMMENT, DELETE_COMMENTS };

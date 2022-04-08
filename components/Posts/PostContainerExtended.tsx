@@ -1,7 +1,13 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Post } from "../../prisma/generated/type-graphql";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { DELETE_POST } from "../../graphql/queries/posts";
+import { DELETE_COMMENTS } from "../../graphql/mutations/comments";
+import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
+import ReactLoading from "react-loading";
 
 const getScore = (count: number) => {
   let content = [];
@@ -34,6 +40,15 @@ const getScore = (count: number) => {
 
 const PostContainerExtended = (post: Post) => {
   const user = useSession().data;
+  const [deletePost, { loading, error }] = useMutation(DELETE_POST);
+  const [deleteComments] = useMutation(DELETE_COMMENTS);
+  const router = useRouter();
+  if (loading)
+    return (
+      <main className="flex items-center justify-center">
+        <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
+      </main>
+    );
 
   const canModify = () => {
     if (post.author?.name === user?.user?.name) {
@@ -44,11 +59,34 @@ const PostContainerExtended = (post: Post) => {
 
   const submitFormDelete = async (e) => {
     e.preventDefault();
+    await deleteComments({
+      variables: {
+        where: {
+          post: {
+            is: {
+              id: {
+                equals: post.id,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    await deletePost({
+      variables: {
+        where: {
+          id: post.id,
+        },
+      },
+    });
+
+    toast.success("Post eliminado");
+    setTimeout(() => {
+      router.push("/");
+    }, 300);
   };
 
-  const submitFormEdit = async (e) => {
-    e.preventDefault();
-  };
   return (
     <div className="w-full shadow-md">
       <a className="c-card block bg-white rounded-lg overflow-hidden">

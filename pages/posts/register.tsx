@@ -13,7 +13,7 @@ import { useQuery, useMutation } from "@apollo/client";
 const RegisterForm = () => {
   const [inputs, setInputs] = useState({});
   const user = useSession().data;
-  const [addPost] = useMutation(STORE_POST);
+  const [addPost, { loading }] = useMutation(STORE_POST);
   const { load, err, countriesData } = getCountries();
   if (load)
     return (
@@ -254,18 +254,7 @@ const RegisterForm = () => {
             className="block bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
-            {load ? (
-              <ReactLoading
-                type="cylon"
-                color="black"
-                height={"7%"}
-                width={"7%"}
-              >
-                <span>Guardando...</span>
-              </ReactLoading>
-            ) : (
-              <span>Guardar</span>
-            )}
+            {loading ? <span>Guardando...</span> : <span>Guardar</span>}
           </button>
         </div>
       </div>
