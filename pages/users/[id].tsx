@@ -26,27 +26,34 @@ const Profile: NextPage = () => {
   const user = data.user;
 
   return (
-    <div className="flex flex-wrap">
-      <Head>
-        <title>{id}</title>
-        <meta name="description" content="Home" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="bg-white w-full justify-center items-center overflow-hidden ">
-        <div className="relative h-40">
-          <img
-            className="absolute h-full w-full object-cover"
-            src={user.image}
-          />
+    <div>
+      <div className="flex flex-wrap">
+        <Head>
+          <title>{id}</title>
+          <meta name="description" content="Home" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className="bg-white w-full justify-center items-center overflow-hidden ">
+          <div className="relative h-40">
+            <img
+              className="absolute h-full w-full object-cover"
+              src={user.image}
+            />
+          </div>
+          <div className="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+            <img className="object-cover w-full h-full" src={user.image} />
+          </div>
+          <div className="mt-16">
+            <h1 className="text-lg text-center font-semibold">{user.name}</h1>
+            <p className="text-sm text-gray-600 text-center">{user.email}</p>
+            <p className="text-sm text-gray-600 text-center">
+              {user.role?.name}
+            </p>
+          </div>
         </div>
-        <div className="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-          <img className="object-cover w-full h-full" src={user.image} />
-        </div>
-        <div className="mt-16">
-          <h1 className="text-lg text-center font-semibold">{user.name}</h1>
-          <p className="text-sm text-gray-600 text-center">{user.email}</p>
-          <p className="text-sm text-gray-600 text-center">{user.role?.name}</p>
-        </div>
+      </div>
+      <div className="flex flex-col md:flex-row">
+        
       </div>
     </div>
   );

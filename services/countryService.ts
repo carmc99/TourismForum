@@ -4,6 +4,13 @@ import { useQuery, useMutation } from "@apollo/client";
 const getCountries = () => {
   const { loading, error, data } = useQuery(GET_COUNTRIES, {
     fetchPolicy: "cache-and-network",
+    variables: {
+      orderBy: [
+        {
+          name: "asc",
+        },
+      ],
+    },
   });
   const load = loading;
   const err = error;

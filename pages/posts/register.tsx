@@ -25,6 +25,7 @@ const RegisterForm = () => {
     toast.error(err.message);
   }
   const { countries } = countriesData;
+  const locations = countries[0].locations;
 
   const validate = (value: any) => {
     if (!value) {
@@ -56,7 +57,7 @@ const RegisterForm = () => {
           },
           location: {
             connect: {
-              id: "1",
+              id: inputs.location,
             },
           },
         },
@@ -158,14 +159,17 @@ const RegisterForm = () => {
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Localizacion
           </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="city"
-            type="text"
+          <select
+            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            name="location"
             required={true}
             onChange={handleChange}
-            placeholder="Medellin"
-          />
+          >
+            <option value="">Seleccione una opcion</option>
+            {locations.map((location) => (
+              <option value={location.id}>{location.name}</option>
+            ))}
+          </select>
         </div>
 
         <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">

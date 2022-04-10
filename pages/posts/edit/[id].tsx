@@ -19,7 +19,7 @@ const UPDATED_POST = gql`
 
 const EditForm = () => {
   const router = useRouter();
-  const [updatedPost] = useMutation(UPDATED_POST);
+  const [updatedPost, {error, loading}] = useMutation(UPDATED_POST);
   let currentPost = "";
   currentPost = localStorage.getItem("current-post");
   const post: Post = JSON.parse(currentPost);
@@ -39,6 +39,7 @@ const EditForm = () => {
       hotelName: post.hotel?.name,
       price: post.hotel?.price_per_night,
       lunch: post.hotel?.lunch_included,
+      location: post.location?.id,
     },
   });
 
@@ -53,6 +54,7 @@ const EditForm = () => {
   if (err) return <div>${err ? err.message : ""}</div>;
 
   const { countries } = countriesData;
+  const locations = countries[0].locations;
 
   const validate = (value: any) => {
     if (!value) {
@@ -85,7 +87,7 @@ const EditForm = () => {
           },
           location: {
             connect: {
-              id: "1",
+              id: data.location,
             },
           },
         },
@@ -182,12 +184,17 @@ const EditForm = () => {
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Localizacion
           </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            {...register("city", { required: true })}
-            type="text"
-            placeholder="Ciudad"
-          />
+          <select
+            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            {...register("location", { required: true })}
+          >
+            <option selected value={post.location.id}>
+              {post.location.name}
+            </option>
+            {locations.map((location) => (
+              <option value={location.id}>{location.name}</option>
+            ))}
+          </select>
         </div>
 
         <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
@@ -263,18 +270,7 @@ const EditForm = () => {
             className="block bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
-            {load ? (
-              <ReactLoading
-                type="cylon"
-                color="black"
-                height={"7%"}
-                width={"7%"}
-              >
-                <span>Guardando...</span>
-              </ReactLoading>
-            ) : (
-              <span>Guardar</span>
-            )}
+            {loading ? <span>Guardando...</span> : <span>Guardar</span>}
           </button>
         </div>
       </div>

@@ -59,6 +59,8 @@ const PostContainerExtended = (post: Post) => {
 
   const submitFormDelete = async (e) => {
     e.preventDefault();
+
+    
     await deleteComments({
       variables: {
         where: {

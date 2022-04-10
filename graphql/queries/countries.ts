@@ -1,9 +1,13 @@
 import { gql } from "@apollo/client";
 const GET_COUNTRIES = gql`
-  query Countries {
+  query Countries($orderBy: [LocationOrderByWithRelationInput!]) {
     countries {
-      name
       id
+      name
+      locations(orderBy: $orderBy) {
+        id
+        name
+      }
     }
   }
 `;
