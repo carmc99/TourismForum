@@ -47,7 +47,7 @@ const CommentContainer = (comment: Comment) => {
     }
     return false;
   };
-  const submitForm = async (e) => {
+  const submitForm = async (e: any) => {
     e.preventDefault();
     await deleteComment({
       variables: {

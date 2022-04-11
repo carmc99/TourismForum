@@ -6,7 +6,7 @@ import ReactLoading from "react-loading";
 import { STORE_COMMENT } from "../../graphql/mutations/comments";
 import { toast } from "react-toastify";
 
-const CommentForm = (props) => {
+const CommentForm = (props: any) => {
   const [addComment, { loading, error }] = useMutation(STORE_COMMENT);
   const session = useSession();
   const user = session.data?.user;
@@ -19,14 +19,14 @@ const CommentForm = (props) => {
     toast.error(error.message);
   }
 
-  const star = (param) => {
+  const star = (param: any) => {
     return clicked[param]
       ? "fa-solid fa-star cursor-pointer"
       : "fa-regular fa-star cursor-pointer";
   };
   const { form, formData, updateFormData } = useFormData(null);
 
-  const submitForm = async (e) => {
+  const submitForm = async (e: any) => {
     e.preventDefault();
     await addComment({
       variables: {
@@ -53,7 +53,7 @@ const CommentForm = (props) => {
   };
 
   const [clicked, setClicked] = useState([false, false, false, false, false]);
-  const getScore = (scores) => {
+  const getScore = (scores: any) => {
     let i = 0;
     while (scores[i]) {
       i++;
@@ -61,7 +61,7 @@ const CommentForm = (props) => {
     return i;
   };
 
-  const handleStarClick = (e, index) => {
+  const handleStarClick = (e: any, index: any) => {
     e.preventDefault();
     let clickStates = [...clicked];
     for (let i = 0; i < 5; i++) {

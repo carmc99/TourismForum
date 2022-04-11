@@ -6,7 +6,7 @@ import ReactLoading from "react-loading";
 import { BIOMES } from "../../graphql/queries/biomes";
 import { toast } from "react-toastify";
 import { getCountries } from "../../services/countryService";
-import { Country } from "../../prisma/generated/type-graphql";
+import { Country, Location } from "../../prisma/generated/type-graphql";
 import { STORE_POST } from "../../graphql/mutations/posts";
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -166,7 +166,7 @@ const RegisterForm = () => {
             onChange={handleChange}
           >
             <option value="">Seleccione una opcion</option>
-            {locations.map((location) => (
+            {locations.map((location: Location) => (
               <option value={location.id}>{location.name}</option>
             ))}
           </select>

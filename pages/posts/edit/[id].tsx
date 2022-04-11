@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import validator from "validator";
-import { Country, Post } from "../../../prisma/generated/type-graphql";
+import {
+  Country,
+  Location,
+  Post,
+} from "../../../prisma/generated/type-graphql";
 import { BIOMES } from "../../../graphql/queries/biomes";
 import ReactLoading from "react-loading";
 import { getCountries } from "../../../services/countryService";
@@ -19,7 +23,7 @@ const UPDATED_POST = gql`
 
 const EditForm = () => {
   const router = useRouter();
-  const [updatedPost, {error, loading}] = useMutation(UPDATED_POST);
+  const [updatedPost, { error, loading }] = useMutation(UPDATED_POST);
   let currentPost = "";
   currentPost = localStorage.getItem("current-post");
   const post: Post = JSON.parse(currentPost);
@@ -63,7 +67,7 @@ const EditForm = () => {
     return validator.isURL(value);
   };
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (data: any, e: any) => {
     const response = await updatedPost({
       variables: {
         where: {
@@ -191,7 +195,7 @@ const EditForm = () => {
             <option selected value={post.location.id}>
               {post.location.name}
             </option>
-            {locations.map((location) => (
+            {locations.map((location: Location) => (
               <option value={location.id}>{location.name}</option>
             ))}
           </select>

@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     );
   let { posts } = data;
 
-  const handleFilter = (e) => {
+  const handleFilter = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
     setFilter((values) => ({ ...values, [name]: value }));

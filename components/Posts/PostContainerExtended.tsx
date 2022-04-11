@@ -57,7 +57,7 @@ const PostContainerExtended = (post: Post) => {
     return false;
   };
 
-  const submitFormDelete = async (e) => {
+  const submitFormDelete = async (e: any) => {
     e.preventDefault();
 
     

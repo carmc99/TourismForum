@@ -3,7 +3,7 @@ import { Comment } from "../../prisma/generated/type-graphql";
 import CommentContainer from "./CommentContainer";
 import CommentForm from "./CommentForm";
 
-const Comments = (props) => {
+const Comments = (props: any) => {
   const postId = props.id;
   const comments = props.comments;
   return (
