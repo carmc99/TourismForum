@@ -129,7 +129,9 @@ const EditForm = () => {
             >
               <option value="">Seleccione una opcion</option>
               {BIOMES.map((biome) => (
-                <option value={biome}>{biome}</option>
+                <option key={biome} value={biome}>
+                  {biome}
+                </option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -170,7 +172,9 @@ const EditForm = () => {
                 {post.location.country.name}
               </option>
               {countries.map((country: Country) => (
-                <option value={country.id}>{country.name}</option>
+                <option key={country.id} value={country.id}>
+                  {country.name}
+                </option>
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -196,7 +200,9 @@ const EditForm = () => {
               {post.location.name}
             </option>
             {locations.map((location: Location) => (
-              <option value={location.id}>{location.name}</option>
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
             ))}
           </select>
         </div>

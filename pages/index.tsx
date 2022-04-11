@@ -33,24 +33,6 @@ const Home: NextPage = () => {
     setFilter((values) => ({ ...values, [name]: value }));
   };
   const r = null;
-  const search = () => {
-    const filtered = posts.filter((x: Post) => {
-      const byBiome = x.biome.toLowerCase() === filter.postFilter.toLowerCase();
-      const byCity =
-        x.location.name.toLowerCase() === filter.postFilter.toLowerCase();
-      const byCountry =
-        x.location.country.name.toLowerCase() ===
-        filter.postFilter.toLowerCase();
-      if (byBiome) {
-        return byBiome;
-      }
-      if (byCity) {
-        return byCity;
-      }
-      return byCountry;
-    });
-    posts = filtered;
-  };
 
   return (
     <div>
@@ -65,10 +47,7 @@ const Home: NextPage = () => {
           />
         </div>
         <div className="flex-1 ml-2">
-          <button
-            className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
-            onClick={search}
-          >
+          <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
             Filtrar
           </button>
         </div>
@@ -89,7 +68,7 @@ const Home: NextPage = () => {
       <div className="flex flex-wrap">
         {posts && posts.length > 0 ? (
           posts.map((p: Post) => {
-            return <PostContainer {...p} />;
+            return <PostContainer key={p.id} {...p} />;
           })
         ) : (
           <div>Sin informacion para mostrar</div>

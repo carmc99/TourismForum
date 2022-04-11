@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import React, { useState } from "react";
 import useFormData from "../../hooks/useFormData";
 import { useMutation } from "@apollo/client";
@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 const CommentForm = (props: any) => {
   const [addComment, { loading, error }] = useMutation(STORE_COMMENT);
   const session = useSession();
-  const user = session.data?.user;
+  const user: any = session.data?.user;
   if (loading) {
     <main className="flex items-center justify-center">
       <ReactLoading type="cylon" color="black" height={"7%"} width={"7%"} />
@@ -28,6 +28,9 @@ const CommentForm = (props: any) => {
 
   const submitForm = async (e: any) => {
     e.preventDefault();
+    if (!user) {
+      signOut();
+    }
     await addComment({
       variables: {
         data: {
@@ -35,7 +38,7 @@ const CommentForm = (props: any) => {
           score: getScore(clicked),
           user: {
             connect: {
-              id: user.id,
+              id: user?.id,
             },
           },
           post: {
