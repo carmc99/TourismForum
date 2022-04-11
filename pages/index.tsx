@@ -64,7 +64,6 @@ const Home: NextPage = () => {
         <meta name="description" content="Home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* SM -> SCREEN >= 640 */}
       <div className="flex flex-wrap">
         {posts && posts.length > 0 ? (
           posts.map((p: Post) => {

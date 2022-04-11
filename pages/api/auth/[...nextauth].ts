@@ -4,7 +4,6 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import Prisma from "../../../config/prisma"
 
 export default NextAuth({
-  // Configure one or more authentication providers
   adapter: PrismaAdapter(Prisma),
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {

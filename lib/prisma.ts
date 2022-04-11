@@ -1,7 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-// Prevent multiple instances of Prisma Client in development
-// @ts-ignore 
 declare const global: NodeJS.Global & { prisma?: PrismaClient }; 
 
 export const prisma = global.prisma || new PrismaClient();
