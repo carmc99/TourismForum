@@ -16,7 +16,6 @@ const UPDATED_POST = gql`
   mutation UpdatePost($data: PostUpdateInput!, $where: PostWhereUniqueInput!) {
     updatePost(data: $data, where: $where) {
       id
-      biome
     }
   }
 `;

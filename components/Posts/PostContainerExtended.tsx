@@ -108,7 +108,7 @@ const PostContainerExtended = (post: Post) => {
         {post.hotel ? (
           <div className="p-3 border-t text-xs text-gray-700">
             <span className="flex items-center font-bold mb-1">
-              <i className="fas fa-concierge-bell fa-fw mr-2 text-gray-900"></i>{" "}
+              <i className="fas fa-concierge-bell fa-fw mr-2 text-gray-900"></i>
               Hotel
             </span>
             <span className="flex items-center pb-2 font-semi-bold text-sm">
@@ -117,17 +117,16 @@ const PostContainerExtended = (post: Post) => {
 
             <div className="p-1 border-t text-xs text-gray-700"></div>
             <span className="flex items-center font-bold mb-1">
-              <i className="fas fa-hand-holding-usd fa-fw mr-2 text-gray-900"></i>{" "}
+              <i className="fas fa-hand-holding-usd fa-fw mr-2 text-gray-900"></i>
               Precio por noche:
             </span>
 
             <span className="flex items-center font-semi-bold pb-2">
-              {" "}
               <h2>${post.hotel.price_per_night} USD</h2>
             </span>
             <div className="p-1 border-t text-xs text-gray-700"></div>
             <span className="flex items-center font-bold mb-1">
-              <i className="fas fa-utensils fa-fw mr-2 text-gray-900"></i>{" "}
+              <i className="fas fa-utensils fa-fw mr-2 text-gray-900"></i>
               Alimentación incluida:
             </span>
 

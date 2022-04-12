@@ -80,22 +80,25 @@ const CommentForm = (props: any) => {
       ref={form}
       onChange={updateFormData}
       onSubmit={submitForm}
-      className="flex mb-4"
+      className="flex-col mb-4"
     >
-      <div className="flex-1/2  mt-3">
-        <div className="flex-shrink-0">
-          <img className="w-16 h-16 rounded-full" src={user?.image} />
+      <div className="flex">
+        <div className="flex-1/2  mt-3">
+          <div className="flex-shrink-0">
+            <img className="w-16 h-16 rounded-full" src={user?.image} />
+          </div>
+        </div>
+        <div className="flex-1 m-3">
+          <textarea
+            rows={3}
+            required={true}
+            name="comment"
+            placeholder="Comentario"
+            className="resize-none block px-8 w-full border rounded py-2 text-gray-700 focus:outline-none items-center max-h-150"
+          />
         </div>
       </div>
-      <div className="flex-1  m-3">
-        <textarea
-          rows={3}
-          required={true}
-          name="comment"
-          placeholder="Comentario"
-          className="resize-none block px-8 w-full border rounded py-2 text-gray-700 focus:outline-none items-center max-h-150"
-        />
-      </div>
+
       <div className="flex-1/2  flex justify-center items-center">
         <p className="pr-2">Calificar: </p>
         <i onClick={(e) => handleStarClick(e, 0)} className={star(0)} />

@@ -40,6 +40,7 @@ const RegisterForm = () => {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  console.table(inputs);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const response = await addPost({
@@ -58,6 +59,19 @@ const RegisterForm = () => {
           location: {
             connect: {
               id: inputs.location,
+            },
+          },
+          hotel: {
+            connectOrCreate: {
+              where: {
+                id: "1",
+              },
+              create: {
+                name: inputs.hotelName,
+                lunch_included: Boolean(inputs.lunch),
+                price_per_night: parseInt(inputs.price),
+                image: "",
+              },
             },
           },
         },
@@ -219,7 +233,7 @@ const RegisterForm = () => {
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-2">
-        <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0">
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Nombre
           </label>
@@ -232,7 +246,7 @@ const RegisterForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0">
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
             Precio por noche
           </label>
@@ -245,7 +259,7 @@ const RegisterForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0 flex items-center">
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0 flex items-center">
           <label className="form-check-label inline-block text-gray-800 pr-2">
             Incluye alimentación?
           </label>

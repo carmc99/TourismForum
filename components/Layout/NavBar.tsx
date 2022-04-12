@@ -11,11 +11,9 @@ function Nav() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/">
-                <img
-                  className="h-8 w-8 cursor-pointer"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
+                <a className="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Inicio
+                </a>
               </Link>
             </div>
             <div className="md:block">
