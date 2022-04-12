@@ -109,7 +109,7 @@ const EditForm = () => {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Titulo
+            Título
           </label>
           <input
             className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -127,7 +127,7 @@ const EditForm = () => {
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               {...register("biome", { required: true })}
             >
-              <option value="">Seleccione una opcion</option>
+              <option value="">Seleccione una opción</option>
               {BIOMES.map((biome) => (
                 <option key={biome} value={biome}>
                   {biome}
@@ -149,10 +149,10 @@ const EditForm = () => {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Descripcion
+            Descripción
           </label>
           <textarea
-            placeholder="Descripcion"
+            placeholder="Descripción"
             className="resize-none bg-gray-200 text-gray-700 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500 w-full"
             {...register("description", { required: true })}
           ></textarea>
@@ -161,7 +161,7 @@ const EditForm = () => {
       <div className="flex flex-wrap -mx-3 mb-2">
         <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Pais
+            País
           </label>
           <div className="relative">
             <select
@@ -190,7 +190,7 @@ const EditForm = () => {
         </div>
         <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Localizacion
+            Localización
           </label>
           <select
             className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -218,7 +218,7 @@ const EditForm = () => {
             {...register("imageUrl", { required: true })}
           />
           <p className="text-red-500 text-xs italic">
-            Por favor ingrese la direccion url donde se encuentra alojada la
+            Por favor ingrese la dirección url donde se encuentra alojada la
             imagen.
           </p>
         </div>
@@ -236,7 +236,7 @@ const EditForm = () => {
       <div className="flex flex-wrap -mx-3 mb-2">
         <div className="w-ful px-3 mb-6 md:mb-0">
           <h3 className="block tracking-wide text-gray-700 font-bold mb-2">
-            (Opcional) Informacion del hotel
+            (Opcional) Información del hotel
           </h3>
         </div>
       </div>
@@ -265,7 +265,7 @@ const EditForm = () => {
         </div>
         <div className="w-ful md:w-1/3 px-3 mb-6 md:mb-0 flex items-center">
           <label className="form-check-label inline-block text-gray-800 pr-2">
-            Incluye alimentacion?
+            Incluye alimentación?
           </label>
           <input
             className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"

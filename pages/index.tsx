@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         <div className="flex-1 flex justify-end">
           <Link href={"/posts/register"}>
             <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
-              Nuevo item
+              Nuevo ítem
             </button>
           </Link>
         </div>
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
             return <PostContainer key={p.id} {...p} />;
           })
         ) : (
-          <div>Sin informacion para mostrar</div>
+          <div>Sin información para mostrar</div>
         )}
       </div>
     </div>

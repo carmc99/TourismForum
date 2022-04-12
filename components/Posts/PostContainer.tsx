@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Post } from "../../prisma/generated/type-graphql";
 
-const getScore = (count:number) => {
+const getScore = (count: number) => {
   let content = [];
   for (let index = 0; index < count; index++) {
     content.push(
@@ -73,7 +73,7 @@ const PostContainer = (post: Post) => {
               <div className="p-1 border-t text-xs text-gray-700"></div>
               <span className="flex items-center font-bold mb-1">
                 <i className="fas fa-utensils fa-fw mr-2 text-gray-900"></i>{" "}
-                Alimentacion incluida:
+                Alimentación incluida:
               </span>
 
               <span className="flex items-center font-semi-bold text-sm">
@@ -87,7 +87,7 @@ const PostContainer = (post: Post) => {
           <div className="p-3 border-t border-b text-xs text-gray-700">
             <span className="flex items-center font-bold mb-1">
               <i className="fas fa-globe-americas fa-fw mr-2 text-gray-900"></i>{" "}
-              Localizacion
+              Localización
             </span>
             <span className="flex items-center">
               {post.location?.name}, {post.location?.country?.name}

@@ -32,7 +32,7 @@ function Nav() {
                   }}
                   className="text-white hover:bg-blue-500 hover:text-white block px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                 >
-                  Cerrar sesion
+                  Cerrar sesión
                 </a>
               </div>
             </div>
