@@ -7,9 +7,11 @@ import { Post } from "../prisma/generated/type-graphql";
 import Link from "next/link";
 import { GET_POSTS_QUERY } from "../graphql/queries/posts";
 import ReactLoading from "react-loading";
+import { render } from "react-dom";
 
 const Home: NextPage = () => {
-  const [filter, setFilter] = useState({});
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [filter, setFilter] = useState("");
   const { loading, error, data } = useQuery(GET_POSTS_QUERY, {
     fetchPolicy: "cache-and-network",
   });
@@ -28,26 +30,53 @@ const Home: NextPage = () => {
   let { posts } = data;
 
   const handleFilter = (e: any) => {
-    const name = e.target.name;
     const value = e.target.value;
-    setFilter((values) => ({ ...values, [name]: value }));
+    setFilter(value);
+    const temp = posts.filter(
+      (post: Post) =>
+        post.title.toLowerCase() == filter.toLowerCase() ||
+        post.biome.toLocaleLowerCase() == filter.toLocaleLowerCase() ||
+        post.location?.name.toLocaleLowerCase() == filter.toLocaleLowerCase()
+    );
+    if (value.length <= 0 || temp.length <= 0) {
+      setFilteredPosts(posts);
+    }
   };
-  const r = null;
+
+  const populatePosts = () => {
+    setFilteredPosts(posts);
+  };
+
+  const search = () => {
+    if (!filter) {
+      return;
+    }
+    const temp = posts.filter(
+      (post: Post) =>
+        post.title.toLowerCase() == filter.toLowerCase() ||
+        post.biome.toLocaleLowerCase() == filter.toLocaleLowerCase() ||
+        post.location?.name.toLocaleLowerCase() == filter.toLocaleLowerCase()
+    );
+    setFilteredPosts(temp);
+  };
 
   return (
     <div>
-      <div className="flex mb-4">
+      <div className="flex mb-4" onLoad={populatePosts}>
         <div className="flex-1">
           <input
             className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white"
             name="postFilter"
             type="text"
             onChange={handleFilter}
-            placeholder="Filtrar"
+            placeholder="Titulo, Bioma, Ciudad"
           />
         </div>
         <div className="flex-1 ml-2">
-          <button className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={search}
+            className="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+          >
             Filtrar
           </button>
         </div>
@@ -64,15 +93,27 @@ const Home: NextPage = () => {
         <meta name="description" content="Home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-wrap">
-        {posts && posts.length > 0 ? (
-          posts.map((p: Post) => {
-            return <PostContainer key={p.id} {...p} />;
-          })
-        ) : (
-          <div>Sin información para mostrar</div>
-        )}
-      </div>
+      {filteredPosts && filteredPosts.length > 0 ? (
+        <div className="flex flex-wrap">
+          {filteredPosts && filteredPosts.length > 0 ? (
+            filteredPosts.map((p: Post) => {
+              return <PostContainer key={p.id} {...p} />;
+            })
+          ) : (
+            <div>Sin información para mostrar</div>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-wrap">
+          {posts && posts.length > 0 ? (
+            posts.map((p: Post) => {
+              return <PostContainer key={p.id} {...p} />;
+            })
+          ) : (
+            <div>Sin información para mostrar</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
